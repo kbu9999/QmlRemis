@@ -44,5 +44,6 @@
         <file>plugins/moviles/main.qml</file>
         <file>assets/icons/download-later.png</file>
         <file>assets/icons/contact-new.png</file>
+        <file>ui/RemisMap.qml</file>
     </qresource>
 </RCC>
