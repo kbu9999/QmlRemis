@@ -1,0 +1,7 @@
+module Models
+
+singleton MainHandler   1.0 MainHandler.qml
+#singleton Service       1.0 Service.qml
+singleton MultasManager 1.0 MultasManager.qml
+
+Config  1.0 Config.qml
