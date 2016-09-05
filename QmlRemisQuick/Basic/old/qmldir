@@ -1,0 +1,16 @@
+module QmlRemis.Basic
+
+AButton     1.0 AButton.qml
+Direccion   1.0 Direccion.qml
+FieldEdit   1.0 FieldEdit.qml
+FieldSearch 1.0 FieldSearch.qml
+GeoSearch   1.0 GeoSearch.qml
+Seccion     1.0 Seccion.qml
+Seccion1    1.0 Seccion1.qml
+Seccion2    1.0 Seccion2.qml
+IconButton  1.0 IconButton.qml
+
+RemisView   1.0 RemisView.qml
+RemisMap    1.0 RemisMap.qml
+
+FieldGeoBox 1.0 FieldGeoBox.qml

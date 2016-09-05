@@ -1,0 +1,7 @@
+module Styles
+
+ButtonEditStyle 1.0  ButtonEditStyle.qml
+TableViewStyle  1.0  TableViewStyle.qml
+TabViewStyle    1.0  TabViewStyle.qml
+
+TextStyled      1.0  TextStyled.qml

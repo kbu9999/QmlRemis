@@ -1,0 +1,7 @@
+module DB.Meta
+
+singleton MetaAlquiler 1.0     MetaAlquiler.qml 
+singleton MetaCliente  1.0     MetaCliente.qml 
+singleton MetaLlamadas 1.0     MetaLlamadas.qml 
+singleton MetaMovil    1.0     MetaMovil.qml 
+singleton MetaParada   1.0     MetaParada.qml

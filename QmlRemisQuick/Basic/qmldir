@@ -1,0 +1,8 @@
+module QmlRemis.Basic
+
+FieldGeoBox 1.0 FieldGeoBox.qml
+
+DelegateCola     1.0 DelegateCola.qml
+DelegateMovil    1.0 DelegateMovil.qml
+
+ViewMoviles      1.0 ViewMoviles.qml

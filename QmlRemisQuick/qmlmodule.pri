@@ -1,0 +1,1 @@
+/home/kbu9999/Documentos/workspace/NewProject/../MyQuick/qmlmodule.pri
