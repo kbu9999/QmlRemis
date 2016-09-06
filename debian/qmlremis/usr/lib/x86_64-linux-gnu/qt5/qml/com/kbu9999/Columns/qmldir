@@ -1,0 +1,8 @@
+module com.kbu9999.Columns
+
+FKColumn        1.0 FKColumn.qml
+EditingColumn   1.0 EditingColumn.qml
+ButtomColumn    1.0 ButtomColumn.qml
+SpinBoxColumn   1.0 SpinBoxColumn.qml
+ComboBoxColumn  1.0 ComboBoxColumn.qml
+TextFieldColumn 1.0 TextFieldColumn.qml

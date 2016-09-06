@@ -1,0 +1,10 @@
+Package: qmlremis
+Version: 0.1-1
+Architecture: all
+Maintainer: kbu9999 <kbu9999@gmail.com>
+Installed-Size: 739
+Section: unknown
+Priority: extra
+Homepage: <insert the upstream URL, if relevant>
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>

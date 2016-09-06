@@ -1,0 +1,8 @@
+module DB
+
+
+Alquiler       1.0  Alquiler.qml 
+Cliente        1.0  Cliente.qml 
+Llamadas       1.0  Llamadas.qml 
+Movil          1.0  Movil.qml 
+Parada         1.0  Parada.qml

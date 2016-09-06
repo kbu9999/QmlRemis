@@ -1,0 +1,6 @@
+module com.kbu9999.SimpleDBSec.Meta
+
+singleton MetaPlugin    1.0     MetaPlugin.qml 
+singleton MetaRol       1.0     MetaRol.qml 
+singleton MetaRolDetalle  1.0   MetaRolDetalle.qml 
+singleton MetaUsuario   1.0     MetaUsuario.qml 

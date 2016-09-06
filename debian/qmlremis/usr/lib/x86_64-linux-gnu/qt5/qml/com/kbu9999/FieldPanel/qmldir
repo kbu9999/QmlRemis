@@ -1,0 +1,10 @@
+module com.kbu9999.FieldPanel
+
+Field           1.0   Field.qml
+FieldComboBox   1.0   FieldComboBox.qml
+FieldDate       1.0   FieldDate.qml
+FieldSpinBox    1.0   FieldSpinBox.qml
+FieldTextEdit   1.0   FieldTextEdit.qml
+FieldTextFK     1.0   FieldTextFK.qml
+Panel           1.0   Panel.qml
+

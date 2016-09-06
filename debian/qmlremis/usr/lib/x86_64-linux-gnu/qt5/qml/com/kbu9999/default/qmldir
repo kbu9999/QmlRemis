@@ -1,0 +1,10 @@
+module MyQuick
+
+FieldEdit      1.0 FieldEdit.qml
+FieldButton    1.0 FieldButton.qml
+FieldCheck     1.0 FieldCheck.qml
+FieldSearch    1.0 FieldSearch.qml
+IconButton     1.0 IconButton.qml
+OpButton       1.0 OpButton.qml
+Search         1.0 Search.qml
+FieldCal       1.0 FieldCal.qml

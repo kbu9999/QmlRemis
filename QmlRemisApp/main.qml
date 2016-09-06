@@ -8,8 +8,8 @@ import "Models"
 
 ApplicationWindow {
     visible: true
-    width: 1200
-    height: 800
+    width: 1024
+    height: 768
 
     /*Connections {
         target: Service
@@ -84,5 +84,7 @@ ApplicationWindow {
         }
     }
 
-    Component.onCompleted: showMaximized()
+    Component.onCompleted: {
+        //showMaximized()
+    }
 }

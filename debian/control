@@ -1,0 +1,15 @@
+Source: qmlremis
+Section: unknown
+Priority: extra
+Maintainer: kbu9999 <kbu9999@gmail.com>
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.6
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://anonscm.debian.org/collab-maint/qmlremis.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/qmlremis.git
+
+Package: qmlremis
+Architecture: all
+Depends: libqt5qml5 libqt5sql5-mysql qml-module-qtquick-controls qml-module-qtgraphicaleffects qml-module-qtwebsockets qml-module-qtlocation qml-module-qtpositioning qml-module-qt-labs-settings python-starpy python-sqlalchemy python-twisted python-autobahn python-pymysql python-yapsy ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
