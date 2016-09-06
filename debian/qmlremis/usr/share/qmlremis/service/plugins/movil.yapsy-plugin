@@ -1,8 +1,0 @@
-[Core]
-Name = MovilPlugin
-Module = movilws
-
-[Documentation]
-Author = Ramiro Cervates
-Version = 0.1
-Description = Movil Websocket

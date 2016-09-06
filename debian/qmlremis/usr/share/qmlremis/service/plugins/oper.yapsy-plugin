@@ -1,8 +1,0 @@
-[Core]
-Name = OperPlugin
-Module = operadorws
-
-[Documentation]
-Author = Ramiro Cervates
-Version = 0.1
-Description = Oper Websocket
