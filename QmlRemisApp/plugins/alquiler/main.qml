@@ -194,7 +194,7 @@ Item {
         spacing: 5
 
         ListView {
-            width: 300
+            width: parent.width / 2
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             anchors.topMargin: 5
@@ -212,7 +212,7 @@ Item {
         }
 
         ListView {
-            width: 300
+            width: parent.width / 2
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             anchors.topMargin: 5
