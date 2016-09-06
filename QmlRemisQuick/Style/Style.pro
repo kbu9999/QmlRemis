@@ -8,7 +8,8 @@ DISTFILES = qmldir \
     ButtonEditStyle.qml \
     TableViewStyle.qml \
     TabViewStyle.qml \
-    TextStyled.qml
+    TextStyled.qml \
+    ButtonStyle.qml
 
 
 include(../qmlmodule.pri)

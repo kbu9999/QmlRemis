@@ -47,8 +47,7 @@ Item {
             MetaUsuario
         ]
 
-        onConnectedChanged: if (connected) loginManager.login("admin", "admin")
-
+        //onConnectedChanged: if (connected) loginManager.login("admin", "admin")
         onError: console.log(error)
     }
 

@@ -1,7 +1,9 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.2
+import QtQuick.Layouts 1.0
 
 import qmlremis.Basic 1.0
+import qmlremis.Style 1.0 as S
 import "../Models" // 1.0
 
 Rectangle {
@@ -42,28 +44,113 @@ Rectangle {
         anchors.topMargin: 6
         anchors.bottomMargin: 6
 
-        Row {
+        RowLayout {
             id: rowC
             anchors.fill: parent
-            anchors.margins: 0
+            anchors.margins: 5
+            spacing: 20
 
-            Caller {
+            /*Caller {
                 id: caller
                 width: 320
 
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
+            } //*/
+
+            Item {
+                id: caller
+                width: 320
+
+                FontLoader { id: digitalFont; source: "../assets/digital-7.ttf" }
+
+                property int llstate: MainHandler.llamada? MainHandler.llamada.estado : 0
+                property string telefono: MainHandler.llamada? MainHandler.llamada.tel : "381 "
+
+                Text {
+                    id: tel
+                    x: 5
+                    font.family: digitalFont.name
+                    font.pixelSize: 54
+
+                    text: caller.telefono
+
+                    ColorAnimation {
+                        target: tel;
+                        property: "color";
+                        from: "white"; to: "red";
+                        loops: Animation.Infinite;
+                        duration: 400
+                        running: caller.llstate == 1
+                    }
+                }
+
+                DelegateMovil {
+                    id: movilDeleg
+                    anchors.bottom: parent.bottom
+
+                    movil: paradasModel.movil
+                }
+
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+            }
+
+            Column {
+                anchors.top: parent.top; anchors.topMargin: 5
+                anchors.bottom: parent.bottom
+                spacing: 2
+
+                Button {
+                    text: "Contestar";
+                    enabled: caller.llstate == 1
+                    onClicked: MainHandler.contestar()
+                    property color color: "green"
+                    width: parent.width
+                    style: S.ButtonStyle { }
+                }
+                Button {
+                    text: "Cortar";
+                    enabled: caller.llstate == 2
+                    onClicked: MainHandler.colgar()
+                    property color color: "red"
+                    width: parent.width
+                    style: S.ButtonStyle { }
+                }
+
+                Rectangle { color: "#d9d9d9"; width: parent.width; height: 1 }
+
+                Button {
+                    text: "Agregar";
+                    enabled: MainHandler.alquiler? true : false
+                    property color color: "#ff8a05"
+                    width: 100
+                    style: S.ButtonStyle { }
+                    onClicked: {
+                        MainHandler.alquiler.parada = paradasModel.parada
+                        MainHandler.pushCurrentAlquiler()
+                    }
+                }
             }
 
             EditCliente {
-                height: parent.height - 10
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                anchors.topMargin: 0; anchors.bottomMargin: 3
                 width: 330
             }
 
             EditAlquiler {
                 id: editAlq
-                height: parent.height - 10
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                anchors.topMargin: 0; anchors.bottomMargin: 3
                 width: 330
+            }
+
+            Item {
+                height: parent.height
+                Layout.fillWidth: true
             }
         }
     }//*/

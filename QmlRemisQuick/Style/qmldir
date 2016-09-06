@@ -1,6 +1,8 @@
 module Styles
 
 ButtonEditStyle 1.0  ButtonEditStyle.qml
+ButtonStyle     1.0  ButtonStyle.qml
+
 TableViewStyle  1.0  TableViewStyle.qml
 TabViewStyle    1.0  TabViewStyle.qml
 
