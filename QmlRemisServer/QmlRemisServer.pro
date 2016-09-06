@@ -46,7 +46,7 @@ pyplugins.path  = $$installPath/plugins
 sysdservice.files += qmlremis.service
 sysdservice.path = /lib/systemd/system/
 
-sql.files = qmlremis.sql
+sql.files = qmlremis.sql sflphoned.yml
 sql.path  = /usr/share/qmlremis
 
 ast.files = $$AST

@@ -1,0 +1,211 @@
+---
+accounts:
+- alias: Pc
+  audioCodecs: 0/3/8/9/110/111/112/
+  audioPortMax: 32766
+  audioPortMin: 16384
+  autoAnswer: false
+  credential:
+  - Account.password: pass1234
+    Account.realm: '*'
+    Account.username: 3001
+  displayName: 
+  dtmfType: overrtp
+  enable: true
+  hasCustomUserAgent: false
+  hostname: localhost
+  id: Account:1140922753
+  interface: default
+  keepAlive: false
+  mailbox: 
+  port: 5060
+  presenceEnabled: false
+  presencePublishSupported: false
+  presenceSubscribeSupported: false
+  publishAddr: 
+  publishPort: 5060
+  registrationexpire: 60
+  ringtoneEnabled: true
+  ringtonePath: /usr/share/sflphone/ringtones/konga.ul
+  sameasLocal: true
+  serviceRoute: 
+  srtp:
+    enable: false
+    keyExchange: 
+    rtpFallback: false
+  stunEnabled: false
+  stunServer: 
+  tls:
+    calist: 
+    certificate: 
+    ciphers: 
+    enable: false
+    method: TLSv1
+    password: 
+    privateKey: 
+    requireCertif: true
+    server: 
+    timeout: 2
+    tlsPort: 5061
+    verifyClient: true
+    verifyServer: false
+  type: SIP
+  useragent: false
+  username: 3001
+  videoCodecs:
+  - bitrate: 400
+    enabled: true
+    name: H263-2000
+    parameters: 
+  - bitrate: 400
+    enabled: true
+    name: H264
+    parameters: profile-level-id=428014
+  - bitrate: 400
+    enabled: true
+    name: MP4V-ES
+    parameters: 
+  - bitrate: 400
+    enabled: true
+    name: VP8
+    parameters: 
+  videoEnabled: false
+  videoPortMax: 65534
+  videoPortMin: 49152
+  zrtp:
+    displaySas: true
+    displaySasOnce: false
+    helloHashEnabled: true
+    notSuppWarning: true
+- alias: IP2IP
+  audioCodecs: 0/3/8/9/104/110/111/112/
+  audioPortMax: 32766
+  audioPortMin: 16384
+  autoAnswer: false
+  credential:
+  - Account.password: 
+    Account.realm: '*'
+    Account.username: 
+  displayName: 
+  dtmfType: overrtp
+  enable: false
+  hasCustomUserAgent: false
+  hostname: 
+  id: IP2IP
+  interface: default
+  keepAlive: false
+  mailbox: 
+  port: 5060
+  presenceEnabled: false
+  presencePublishSupported: false
+  presenceSubscribeSupported: false
+  publishAddr: 
+  publishPort: 5060
+  registrationexpire: 60
+  ringtoneEnabled: true
+  ringtonePath: /usr/share/sflphone/ringtones/konga.ul
+  sameasLocal: true
+  serviceRoute: 
+  srtp:
+    enable: false
+    keyExchange: 
+    rtpFallback: false
+  stunEnabled: false
+  stunServer: 
+  tls:
+    calist: 
+    certificate: 
+    ciphers: 
+    enable: false
+    method: TLSv1
+    password: 
+    privateKey: 
+    requireCertif: true
+    server: 
+    timeout: 2
+    tlsPort: 5061
+    verifyClient: false
+    verifyServer: true
+  type: SIP
+  useragent: false
+  username: 
+  videoCodecs:
+  - bitrate: 400
+    enabled: true
+    name: H263-2000
+    parameters: 
+  - bitrate: 400
+    enabled: true
+    name: H264
+    parameters: profile-level-id=428014
+  - bitrate: 400
+    enabled: true
+    name: MP4V-ES
+    parameters: 
+  - bitrate: 400
+    enabled: true
+    name: VP8
+    parameters: 
+  videoEnabled: true
+  videoPortMax: 65534
+  videoPortMin: 49152
+  zrtp:
+    displaySas: true
+    displaySasOnce: false
+    helloHashEnabled: true
+    notSuppWarning: true
+preferences:
+  historyLimit: 30
+  historyMaxCalls: 20
+  md5Hash: false
+  order: Account:1140922753/IP2IP/
+  portNum: 5060
+  registrationexpire: 180
+  searchBarDisplay: true
+  zoneToneChoice: North America
+voipPreferences:
+  playDtmf: true
+  playTones: true
+  pulseLength: 250
+  symmetric: true
+  zidFile: zidFile
+hooks:
+  iax2Enabled: false
+  numberAddPrefix: 
+  numberEnabled: false
+  sipEnabled: false
+  urlCommand: x-www-browser
+  urlSipField: X-sflphone-url
+audio:
+  alsa:
+    cardIn: 0
+    cardOut: 0
+    cardRing: 0
+    plugin: default
+    smplRate: 44100
+  alwaysRecording: false
+  audioApi: pulseaudio
+  automaticGainControl: false
+  captureMuted: true
+  noiseReduce: false
+  playbackMuted: false
+  pulse:
+    devicePlayback: 
+    deviceRecord: 
+    deviceRingtone: 
+  recordPath: /home/qmlremis
+  volumeMic: 1
+  volumeSpkr: 1
+video:
+  devices:
+  - channel: Camera 1
+    name: HP Truevision HD
+    rate: 10
+    size: 1280x720
+shortcuts:
+  hangUp: 
+  pickUp: 
+  popupWindow: 
+  toggleHold: 
+  togglePickupHangup: 
+...
