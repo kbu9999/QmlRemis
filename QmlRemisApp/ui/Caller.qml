@@ -4,7 +4,7 @@ import QtQuick.Controls.Styles 1.2
 
 import qmlremis.Style 1.0
 import qmlremis.Basic 1.0
-import Models 1.0
+import "../Models"// 1.0
 
 Item {
     id: caller
@@ -36,7 +36,7 @@ Item {
         Text {
             id: tel
             font.family: digitalFont.name
-            font.pixelSize: 38
+            font.pixelSize: 54
 
             text: caller.telefono
 
@@ -135,7 +135,7 @@ Item {
         id: button1
         width: MainHandler.alquiler? 80 : 0
         height: 60
-        text: qsTr("Agregar")
+        text: MainHandler.alquiler? "Agregar" : ""
         anchors.top: row.bottom
         anchors.right: row.right
 

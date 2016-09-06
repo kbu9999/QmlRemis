@@ -23,7 +23,7 @@ ListView {
 
     delegate: Item {
         id: rootDeleg
-        width: 280
+        width: 210
         height: paradasView.height
 
         property Parada par: paradas.at(index)

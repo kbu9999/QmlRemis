@@ -9,7 +9,7 @@ Text {
     elide: Text.ElideRight
     //wrapMode: Text.Wrap
 
-    font.pointSize: 10
+    font.pointSize: 9
     font.family: "BellGothic BT"
 
     color: selected? selectedColor : "#232323"

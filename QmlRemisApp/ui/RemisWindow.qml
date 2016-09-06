@@ -2,12 +2,11 @@ import QtQuick 2.2
 import QtQuick.Controls 1.2
 
 import qmlremis.Basic 1.0
-import Models 1.0
+import "../Models" // 1.0
 
 Rectangle {
     id: window
-    width: 1200
-    height: 800
+    width: 1024; height: 768
     color: "#f3f3f3"
 
     property alias paradasModel: paradas
@@ -29,7 +28,7 @@ Rectangle {
 
     Rectangle {
         id: tools
-        height: 130
+        height: 100
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.top: parent.top
@@ -40,8 +39,8 @@ Rectangle {
         radius: 5
         anchors.rightMargin: 20
         anchors.leftMargin: 20
-        anchors.topMargin: 10
-        anchors.bottomMargin: 10
+        anchors.topMargin: 6
+        anchors.bottomMargin: 6
 
         Row {
             id: rowC
@@ -57,14 +56,14 @@ Rectangle {
             }
 
             EditCliente {
-                height: 110
-                width: 320
+                height: parent.height - 10
+                width: 330
             }
 
             EditAlquiler {
                 id: editAlq
-                height: 110
-                width: 320
+                height: parent.height - 10
+                width: 330
             }
         }
     }//*/

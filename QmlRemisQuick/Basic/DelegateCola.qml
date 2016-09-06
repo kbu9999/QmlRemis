@@ -25,10 +25,12 @@ Rectangle {
 
         delegate: Item {
             width: main.width
-            height: 50
+            height: 40
 
             DelegateMovil {
-                width: parent.width - 40
+                x: 10
+                width: parent.width - 20
+                height: 50
                 showIndex: true
                 pos: index + 1
 

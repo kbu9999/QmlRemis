@@ -32,7 +32,7 @@ Item {
     Rectangle {
         id: header
         width: parent.width
-        height: 40
+        height: 50
         color: "#ededed"
         radius: 2
 
@@ -43,7 +43,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             text: "Espera"
             color: "#505050"
-            font.pointSize: 16
+            font.pointSize: 11
         }
 
         TextStyled {
@@ -51,7 +51,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             text: "Aceptados"
             color: "#505050"
-            font.pointSize: 16
+            font.pointSize: 11
         }
     }
 

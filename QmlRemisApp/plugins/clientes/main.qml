@@ -27,7 +27,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             text: "Administracion de Clientes"
             color: "#505050"
-            font.pointSize: 13
+            font.pointSize: 11
         }
 
         TextField {

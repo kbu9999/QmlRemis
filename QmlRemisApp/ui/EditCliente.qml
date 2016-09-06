@@ -21,6 +21,8 @@ Item {
         id: grid1
         anchors.fill: parent
         anchors.rightMargin: 50
+        rowSpacing: 0
+        columnSpacing: 0
 
         ormObject: MainHandler.cliente
         editIcon: "../assets/icons/document-edit.png"

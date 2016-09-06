@@ -5,32 +5,26 @@ import qmlremis.DB 1.0
 
 Item {
     id: main
-    implicitWidth: 300
-    implicitHeight: 50
-    anchors.margins: 0
+    width: 300
+    height: 42
 
     property Movil movil: null
     property bool showIndex: false
     property int pos: 0
 
     Rectangle {
-        id: rect1
-        width: showIndex ? 40 : -10
-        height: 40
+        id: r1
+        width: showIndex? 36 : 0; height: 36
         color: "#3e5dca"
+        anchors.verticalCenter: parent.verticalCenter
         visible: showIndex
-
-        anchors.left: parent.left
-        anchors.leftMargin: 10
-        anchors.top: parent.top
-        anchors.topMargin: 10
 
         Text {
             anchors.fill: parent
 
             text: pos
             color: "white"
-            font.pointSize: 20
+            font.pointSize: 19
             font.bold: true
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -39,22 +33,21 @@ Item {
     }
 
     Rectangle {
-        id: rect2
-        width: 40
-        height: 40
+        id: r2
+        width: 36; height: 36
         color: "#eca817"
+        anchors.left: r1.right
+        anchors.margins: 5
+        anchors.verticalCenter: parent.verticalCenter
 
-        anchors.left: rect1.right
-        anchors.leftMargin: 10
-        anchors.top: parent.top
-        anchors.topMargin: 10
 
         Text {
             anchors.fill: parent
 
             text: movil? movil.idMovil : "00"
+            //text: "00"
             color: "white"
-            font.pointSize: 20
+            font.pointSize: 19
             font.bold: true
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
@@ -62,19 +55,12 @@ Item {
         }
     }
 
-    Grid {
-        id: gr1
-        anchors.top: parent.top
-        anchors.left: rect2.right
-        //width: 100
-        anchors.right: parent.right
-
-        anchors.margins: 10
-
-        columns: 2
-        columnSpacing: 20
-        rowSpacing: 10
-        verticalItemAlignment: Grid.AlignVCenter
+    Column {
+        height: 36
+        anchors.left: r2.right; anchors.right: parent.right
+        anchors.margins: 5
+        anchors.verticalCenter: parent.verticalCenter
+        spacing: 4
 
         S.TextStyled {
             text: "Modelo"
@@ -84,8 +70,25 @@ Item {
         S.TextStyled {
             text: movil && movil.modelo? movil.modelo : "S/M"
         }
+    }
 
-        S.TextStyled {
+    /*Grid {
+        id: gr1
+        anchors.top: parent.top
+        anchors.left: rect2.right
+        //width: 100
+        anchors.right: parent.right
+
+        anchors.margins: 10
+
+        columns: 1
+        columnSpacing: 16
+        rowSpacing: 8
+        verticalItemAlignment: Grid.AlignVCenter
+
+
+
+        /*S.TextStyled {
             text: "Parada"
             font.bold: true
         }
@@ -94,7 +97,7 @@ Item {
             text: movil && movil.parada? movil.parada.parada : "Sin Parada"
         }
 
-    }
+    }*/
 
 
 }

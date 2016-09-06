@@ -23,7 +23,7 @@ ApplicationWindow {
 
     MainMenu {
         id: menu
-        height: 60
+        height: 50
         anchors.right: parent.right
         anchors.left: parent.left
 
@@ -85,6 +85,6 @@ ApplicationWindow {
     }
 
     Component.onCompleted: {
-        //showMaximized()
+        showMaximized()
     }
 }

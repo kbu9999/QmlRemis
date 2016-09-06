@@ -38,7 +38,7 @@ Item {
             y: 15
             text: "Administracion de Moviles"
             color: "#505050"
-            font.pointSize: 16
+            font.pointSize: 11
         }
 
         Row {

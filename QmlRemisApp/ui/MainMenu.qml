@@ -11,7 +11,7 @@ import Models 1.0
 Rectangle {
     id: bar
     implicitWidth: 1000
-    height: 60
+    height: 50
     color: "#211d1b"
 
     property alias model: toolbar.model
@@ -84,14 +84,14 @@ Rectangle {
 
             Text {
                 id: txt
-                text: title
+                text: title.toUpperCase()
                 //anchors.fill: parent
                 height: parent.height
                 verticalAlignment: Text.AlignVCenter
                 //anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 color: "white"
-                font.pointSize: 11
+                font.pointSize: 10
                 font.bold: true
                 font.family: "BellGothic BT"
                 horizontalAlignment: Text.AlignHCenter
@@ -107,7 +107,7 @@ Rectangle {
     Row {
         id: row
         x: 900
-        y: 14
+        y: 10
         anchors.verticalCenterOffset: -2
         anchors.verticalCenter: parent.verticalCenter
         spacing: 5
@@ -116,7 +116,7 @@ Rectangle {
         anchors.rightMargin: 10
 
         IconButton {
-            width: 40; height: 40
+            width: 32; height: 32
             color: "white"
             hoveredColor: "#e0392e"
             source: "../assets/icons/system-shutdown.png"
@@ -125,14 +125,14 @@ Rectangle {
         }
 
         IconButton {
-            width: 40; height: 40
+            width: 32; height: 32
             color: db.connected? "#37b44b" : "#e0392e"
             hoverEnabled: false
             source: "../assets/icons/network-wireless.png"
         }
 
         IconButton {
-            width: 40; height: 40
+            width: 32; height: 32
             color: config.visible? "#37b44b" : "#e0392e"
             hoveredColor: "white"
             source: "../assets/icons/configure.png"
@@ -141,11 +141,10 @@ Rectangle {
         }
 
         IconButton {
-            width: 40; height: 40
+            width: 32; height: 32
             color: window.state === "map_centro"? "#37b44b" : "#e0392e"
             hoveredColor: "white"
             source: "../assets/icons/web-browser-tree.png"
-            property string oldState: ""
 
             onClicked: {
                 window.state =  window.state === "map_centro"? "" : "map_centro"
