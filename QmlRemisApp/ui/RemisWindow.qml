@@ -173,46 +173,53 @@ Rectangle {
         anchors.leftMargin: 20
         anchors.topMargin: 10
 
-        Centro {
-            id: centro
+        RowLayout {
+            anchors.fill: parent
 
-            width: parent.width / 2
-            anchors.leftMargin: 10
-            anchors.bottomMargin: 10
-            anchors.topMargin: 10
-            anchors.left: parent.left
-            anchors.bottom: parent.bottom
-            anchors.top: parent.top
+            Centro {
+                id: centro
 
-            Behavior on x { NumberAnimation { } }
-            Behavior on width { NumberAnimation { } }
-        }
+                //width: parent.width / 2
+                anchors.leftMargin: 10
+                anchors.bottomMargin: 10
+                anchors.topMargin: 10
+                anchors.left: parent.left
+                anchors.bottom: parent.bottom
+                anchors.top: parent.top
 
-        Loader {
-            id: loader
-            width: parent.width / 2 - 30
-            anchors.bottom: parent.bottom
-            anchors.top: parent.top
-            anchors.left: centro.right
-            anchors.margins: 10
+                Behavior on x { NumberAnimation { } }
+                Behavior on width { NumberAnimation { } }
+            }
 
-            Behavior on x { NumberAnimation { } }
-            Behavior on width { NumberAnimation { } }
-        }
+            Loader {
+                id: loader
+                //width: parent.width / 2 - 30
+                //anchors.right: map.left
+                Layout.fillWidth: true
 
-        RemisMap {
-            id: map
+                anchors.bottom: parent.bottom
+                anchors.top: parent.top
+                anchors.left: centro.right
+                anchors.margins: 10
 
-            anchors.bottom: parent.bottom
-            anchors.top: parent.top
-            anchors.right: parent.right
-            anchors.left: loader.right
+                Behavior on x { NumberAnimation { } }
+                Behavior on width { NumberAnimation { } }
+            }
 
-            anchors.margins: 10
-            visible: false
+            RemisMap {
+                id: map
 
-            Behavior on x { NumberAnimation { } }
-            Behavior on width { NumberAnimation { } }
+                anchors.bottom: parent.bottom
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.left: loader.right
+
+                anchors.margins: 10
+                visible: false
+
+                Behavior on x { NumberAnimation { } }
+                Behavior on width { NumberAnimation { } }
+            }
         }
     }
     states: [

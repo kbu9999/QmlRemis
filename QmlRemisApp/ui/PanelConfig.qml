@@ -44,11 +44,14 @@ Item {
             MetaPlugin,
             MetaRol,
             MetaRolDetalle,
-            MetaUsuario
+            MetaUsuario,
+            MetaLog
         ]
 
         //onConnectedChanged: if (connected) loginManager.login("admin", "admin")
         onError: console.log(error)
+
+        Component.onCompleted: console.log(user, database)
     }
 
     Settings {

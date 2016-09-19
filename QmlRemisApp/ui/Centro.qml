@@ -12,7 +12,7 @@ import qmlremis.DB.Meta 1.0
 
 ListView {
     id: paradasView
-    width: parent.width
+    width: 210 * count > parent.width / 2? parseInt(parent.width / 420) * 210 : 210 * count
     height: 300
     orientation: ListView.Horizontal
     flickableDirection: Flickable.HorizontalFlick

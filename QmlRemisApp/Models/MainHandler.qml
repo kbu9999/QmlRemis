@@ -54,7 +54,9 @@ Item {
 
     QtObject {
         id: pr
-        property Cliente cliente
+        property Cliente cliente: Cliente {
+        }
+
         property Llamadas llamada
         property Alquiler alquiler
         property string callid

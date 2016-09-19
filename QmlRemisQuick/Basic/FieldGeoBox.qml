@@ -30,20 +30,20 @@ Field {
 
         onStatusChanged: {
             switch(status) {
-                case 1:
-                    loading.visible = true
-                    enabled = false
-                    break;
-                case 2:
-                    loading.visible = false
-                    enabled = true
-                    popup.toggleShow()
-                    break;
-                default:
-                    loading.visible = false
-                    enabled = true
-                    popup.clear()
-                    break;
+            case 1:
+                loading.visible = true
+                enabled = false
+                break;
+            case 2:
+                loading.visible = false
+                enabled = true
+                popup.toggleShow()
+                break;
+            default:
+                loading.visible = false
+                enabled = true
+                popup.clear()
+                break;
             }
         }
 
@@ -60,8 +60,9 @@ Field {
         }
 
         Timer {
-            id: timer; interval: 1000
-            onTriggered: search()
+            id: timer; interval: 5000
+            //onTriggered: search()
+            onTriggered: gsearch.status = 0
             function search() {
                 if (!geoSearch.editMode) return;
 
@@ -69,12 +70,20 @@ Field {
                 var tp = gsearch.text.replace(/ /, "+")
                 var http = new XMLHttpRequest();
                 http.onreadystatechange = function() {
-                        if (http.readyState == XMLHttpRequest.DONE) {
+                    if (http.readyState === XMLHttpRequest.DONE) {
+
+                        if(xhr.status !== 200){  //check if "OK" (200)
+                            console.log("error http request")
+                            timer.stop()
+                            gsearch.status = 0
+                            return;
+                        }
 
                         var a = JSON.parse(http.responseText);
                         var results = a.results;
                         gmodel.clear()
                         if (results.length === 1) {
+                            //console.log("fgeo: es uno")
                             var p = results[0].geometry.location
                             geoSearch.gpsSelected(gsearch.text, p.lat, p.lng)
                             gsearch.status = 0
@@ -87,7 +96,7 @@ Field {
                             var r = results[i]
                             var pos = r.geometry.location
                             gmodel.append({ "address": r.formatted_address.replace(", Tucumán, Argentina", ""),
-                                          "lat" :  pos.lat, "lon": pos.lng})
+                                              "lat" :  pos.lat, "lon": pos.lng})
                         }
                         geoSearch.searched()
                     }
@@ -114,7 +123,7 @@ Field {
             id: popup
             property int y: gsearch.height
             __minimumWidth: gsearch.width - 2
-            __visualItem: gsearch
+            //__visualItem: gsearch
 
             Instantiator {
                 model: gmodel

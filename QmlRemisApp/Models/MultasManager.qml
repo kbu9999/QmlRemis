@@ -3,6 +3,7 @@ import QtQuick 2.2
 import OrmQuick 1.0
 
 import qmlremis.DB.Meta 1.0
+import com.kbu9999.SimpleDBSec 1.0
 
 Item {
 
@@ -28,6 +29,8 @@ Item {
 
         multas.append(nm)
         multas.commit()
+
+        LoginManager.addLog("ha multado con "+mins+"Min al Movil: "+movil.idMovil)
     }
 
     Timer {

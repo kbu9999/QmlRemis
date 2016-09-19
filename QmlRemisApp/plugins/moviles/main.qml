@@ -111,11 +111,11 @@ Item {
                 menu: Menu {
                     MenuItem {
                         text: "1 Hora"
-                        onTriggered: parent.multar(60)
+                        onTriggered: header.multar(60)
                     }
                     MenuItem {
                         text: "3 Horas"
-                        onTriggered: parent.multar(60*3)
+                        onTriggered: header.multar(60*3)
                     }
                 }
             }

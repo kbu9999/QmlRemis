@@ -55,7 +55,7 @@ Item {
             onSearched: {
                 if (window.state === "" ) window.state = "map_centro";
 
-                map.geoItem = showMap
+                map.geoItem = showClMap
                 map.geoModel = gmodel
             }
 

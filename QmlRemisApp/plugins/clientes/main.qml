@@ -86,8 +86,6 @@ Item {
 
     }
 
-
-
     OrmFilterModel {
         id: filter
         sourceModel: OrmModel {
