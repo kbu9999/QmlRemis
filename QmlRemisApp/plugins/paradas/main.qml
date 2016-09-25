@@ -22,43 +22,56 @@ Item {
 
         border.color: "#d9d9d9"
 
-        TextStyled {
-            x: 15
-            anchors.verticalCenter: parent.verticalCenter
-            text: "Administracion de Paradas"
-            color: "#505050"
-            font.pointSize: 11
-        }
+        Row {
+            anchors.fill: parent
+            anchors.margins: 20
+            spacing: 10
 
-        Button {
-            x: 490; y: 18
-            //width: 36; height: 36
-            style: ButtonEditStyle { }
-            iconSource: "../../assets/icons/world.png"
-            onClicked: {
-                if (window.state === "map_plug" ) {
-                    window.state = "";
-                    return;
-                }
-
-                window.state = "map_plug"
-                map.clearMapItems()
-                map.geoItem = showMap
-                map.geoModel = ld
+            TextStyled {
+                anchors.verticalCenter: parent.verticalCenter
+                text: "Administracion de Paradas"
+                color: "#505050"
+                font.pointSize: 11
             }
-        }
 
-        Button {
-            x: 530; y: 18
-            //width: 36; height: 36
-            style: ButtonEditStyle { }
-            iconSource: "../../assets/icons/document-save.png"
-            onClicked: ld.commit()
+            Button {
+                //width: 36; height: 36
+                anchors.verticalCenter: parent.verticalCenter
+                style: ButtonEditStyle { }
+                iconSource: "../../assets/icons/world.png"
+                onClicked: {
+                    if (window.state === "map_plug" ) {
+                        window.state = "";
+                        return;
+                    }
+
+                    window.state = "map_plug"
+                    map.clearMapItems()
+                    map.geoItem = showMap
+                    map.geoModel = paradas
+                }
+            }
+
+            Button {
+                //width: 36; height: 36
+                anchors.verticalCenter: parent.verticalCenter
+                style: ButtonEditStyle { }
+                iconSource: "../../assets/icons/document-save.png"
+                onClicked: paradas.commit()
+            }
+
+            Button {
+                //width: 36; height: 36
+                anchors.verticalCenter: parent.verticalCenter
+                style: ButtonEditStyle { }
+                iconSource: "../../assets/icons/contact-new.png"
+                onClicked: paradas.insertRows(paradas.count - 1, 1)
+            }
         }
 
     }
 
-    Component.onCompleted: ld.load()
+    //Component.onCompleted: ld.load()
 
     TableView {
         id: tbView
@@ -66,15 +79,22 @@ Item {
         anchors.top: header.bottom
         anchors.bottom: parent.bottom
 
-        model: OrmModel {
+        /*model: OrmModel {
             id: ld
             metaTable: MetaParada
             loader.loadForeignKeys: false
-        }
+        }//*/
+
+        model: paradas
 
         style: TableViewStyle { }
 
         ButtomColumn { source: "qrc:/assets/icons/user-group-properties.png" }
+
+        ButtomColumn {
+            source: "qrc:/assets/icons/kick-user.png"
+            onClicked: paradas.removeRows(row, 1)
+        }
 
         TableViewColumn {
             title: "ID"
@@ -88,10 +108,10 @@ Item {
             width: 150
 
             onTextChanged: {
-                var cl = ld.at(row)
+                var cl = paradas.at(row)
                 if (!cl) return;
 
-                cl.nombre = text
+                cl.parada = text
             }
         }
 
@@ -105,7 +125,7 @@ Item {
         MapQuickItem {
             id: mqi
 
-            property Parada parada: ld.at(index)
+            property Parada parada: paradas.at(index)
 
             anchorPoint.x: img.width/2
             anchorPoint.y: img.height/2
