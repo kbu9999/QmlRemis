@@ -102,24 +102,44 @@ Item {
 
     Component {
         id: showMap
-        MapCircle {
+        MapQuickItem {
             id: mqi
+
             property Parada parada: ld.at(index)
 
-            color: "#663daee9"
-            radius: 2000
-            center: parada.gps == ""? map.center : parada.coordinates
-            opacity: ma.drag.active? 0.5 : 1
+            anchorPoint.x: img.width/2
+            anchorPoint.y: img.height/2
+            coordinate: parada.gps == ""? map.center : parada.coordinates
 
-            MouseArea {
-                id: ma
-                anchors.fill: parent
-                drag.target: mqi
+            sourceItem:  Rectangle {
+                id: img
+                color: "#663daee9"
+                opacity: ma.drag.active? 0.5 : 1
+                width: 200; height: 200
+                radius: 100
 
-                onPressed: map.gesture.enabled = false
-                onReleased: {
-                    map.gesture.enabled = true;
-                    mqi.parada.setGps(mqi.center)
+                Rectangle {
+                    anchors.centerIn: parent
+                    width: 6; height: 6; radius: 3
+                    color: "blue"
+                }
+
+                Text {
+                    anchors.centerIn: parent
+                    anchors.verticalCenterOffset: -20
+                    text: parada.parada
+                }
+
+                MouseArea {
+                    id: ma
+                    anchors.fill: parent
+                    drag.target: mqi
+
+                    onPressed: map.gesture.enabled = false
+                    onReleased: {
+                        map.gesture.enabled = true;
+                        parada.setGps(mqi.coordinate)
+                    }
                 }
             }
         }
