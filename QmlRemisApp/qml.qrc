@@ -1,18 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>ui/BarOp.qml</file>
         <file>ui/Caller.qml</file>
         <file>ui/Centro.qml</file>
         <file>ui/ColaModel.qml</file>
         <file>ui/EditAlquiler.qml</file>
         <file>ui/EditCliente.qml</file>
-        <file>ui/Espera.qml</file>
-        <file>ui/MainMenu.qml</file>
-        <file>ui/PanelConfig.qml</file>
-        <file>ui/PanelLogin.qml</file>
         <file>ui/RemisWindow.qml</file>
-        <file>ui/StatusBar.qml</file>
         <file>Models/Config.qml</file>
         <file>Models/MainHandler.qml</file>
         <file>Models/MultasManager.qml</file>

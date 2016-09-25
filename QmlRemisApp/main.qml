@@ -20,7 +20,7 @@ SecWindow {
     width: 800
     height: 600
 
-    title: "test"
+    title: "QmlRemisApp"
     menuView: MyMenu { }
 
     loginStyle: LoginStyle {
@@ -94,5 +94,9 @@ SecWindow {
             config: ConfigDB { }
         }
     ]
+
+    Component.onCompleted: {
+        showMaximized()
+    }
 
 }

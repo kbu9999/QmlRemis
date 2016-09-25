@@ -50,7 +50,7 @@ MenuView {
 
         Text {
             id: txt
-            text: title.toUpperCase()
+            text: modelData.text
             //anchors.fill: parent
             height: parent.height
             verticalAlignment: Text.AlignVCenter

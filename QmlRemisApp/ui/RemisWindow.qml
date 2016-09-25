@@ -40,6 +40,7 @@ Rectangle {
         menu.addAction(a2)
         menu.addAction(a3)
         menu.addAction(a4)
+        a1.trigger()
     }
 
     Rectangle {
