@@ -65,47 +65,9 @@ Rectangle {
             anchors.margins: 5
             spacing: 20
 
-            /*Caller {
+            Caller {
                 id: caller
                 width: 320
-
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-            } //*/
-
-            Item {
-                id: caller
-                width: 320
-
-                FontLoader { id: digitalFont; source: "../assets/digital-7.ttf" }
-
-                property int llstate: MainHandler.llamada? MainHandler.llamada.estado : 0
-                property string telefono: MainHandler.llamada? MainHandler.llamada.tel : "381 "
-
-                Text {
-                    id: tel
-                    x: 5
-                    font.family: digitalFont.name
-                    font.pixelSize: 54
-
-                    text: caller.telefono
-
-                    ColorAnimation {
-                        target: tel;
-                        property: "color";
-                        from: "white"; to: "red";
-                        loops: Animation.Infinite;
-                        duration: 400
-                        running: caller.llstate == 1
-                    }
-                }
-
-                DelegateMovil {
-                    id: movilDeleg
-                    anchors.bottom: parent.bottom
-
-                    movil: paradasModel.movil
-                }
 
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
@@ -119,18 +81,20 @@ Rectangle {
                 Button {
                     text: "Contestar";
                     enabled: caller.llstate == 1
-                    onClicked: MainHandler.contestar()
                     property color color: "green"
                     width: parent.width
                     style: S.ButtonStyle { }
+
+                    onClicked: MainHandler.contestar()
                 }
                 Button {
                     text: "Cortar";
                     enabled: caller.llstate == 2
-                    onClicked: MainHandler.colgar()
                     property color color: "red"
                     width: parent.width
                     style: S.ButtonStyle { }
+
+                    onClicked: MainHandler.colgar()
                 }
 
                 Rectangle { color: "#d9d9d9"; width: parent.width; height: 1 }
@@ -141,6 +105,7 @@ Rectangle {
                     property color color: "#ff8a05"
                     width: 100
                     style: S.ButtonStyle { }
+
                     onClicked: {
                         MainHandler.alquiler.parada = paradasModel.parada
                         MainHandler.pushCurrentAlquiler()
