@@ -47,5 +47,7 @@
         <file>ui/RemisMap.qml</file>
         <file>plugins/paradas/main.qml</file>
         <file>assets/icons/user-group-properties.png</file>
+        <file>MyMenu.qml</file>
+        <file>ConfigDB.qml</file>
     </qresource>
 </RCC>

@@ -19,6 +19,13 @@ Rectangle {
     Action { shortcut: "pgDown"; onTriggered: paradas.back() }
     //Action { shortcut: "F4"; onTriggered: console.log("F4") }
 
+
+    Action { id: a2; text: "Alquiler"; onTriggered: pluginLoad("../plugins/alquiler/main.qml") }
+    Action { id: a3; text: "Clientes"; onTriggered: pluginLoad("../plugins/clientes/main.qml") }
+    Action { id: a1; text: "Moviles";  onTriggered: pluginLoad("../plugins/moviles/main.qml") }
+    Action { id: a4; text: "Paradas";  onTriggered: pluginLoad("../plugins/paradas/main.qml") }
+
+
     ColaModel {
         id: paradas
     }
@@ -26,6 +33,13 @@ Rectangle {
     function pluginLoad(source) {
         if (source === "") loader.sourceComponent = null
         else loader.source = source
+    }
+
+    Component.onCompleted: {
+        menu.addAction(a1)
+        menu.addAction(a2)
+        menu.addAction(a3)
+        menu.addAction(a4)
     }
 
     Rectangle {

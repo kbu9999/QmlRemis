@@ -1,90 +1,98 @@
-import QtQuick 2.0
+import QtQuick 2.2
+import QtQuick.Window 2.1
 import QtQuick.Controls 1.1
-import QtGraphicalEffects 1.0 as G
+import QtQuick.Dialogs 1.2
+import Qt.labs.settings 1.0
+
 import OrmQuick 1.0
+import com.kbu9999.SimpleDBSec 1.0
+import com.kbu9999.SimpleDBSec.Meta 1.0
 
 import "ui"
-import "Models"
+import Models 1.0
+import qmlremis.Style 1.0
+import qmlremis.Basic 1.0
+import qmlremis.DB.Meta 1.0
 
-ApplicationWindow {
+SecWindow {
+    id: main
     visible: true
-    width: 1024
-    height: 768
+    width: 800
+    height: 600
 
-    /*Connections {
-        target: Service
-        onUpdateParada: MainHandler.updateParada(idParada)
-        onUpdateEspera: MainHandler.updateEspera()
-    }//*/
+    title: "test"
+    menuView: MyMenu { }
 
-    property alias db: config.db
-    property alias loginManager: login.loginManager
-    property alias window: mainld.item
+    loginStyle: LoginStyle {
+        background: Item {
 
-    MainMenu {
-        id: menu
-        height: 50
-        anchors.right: parent.right
-        anchors.left: parent.left
-
-        Component {
-            id: rwcomp
-            RemisWindow {
-            }
-        }
-
-        model: ListModel {
-            //ListElement { title: "centro" }
-            //ListElement { title: "moviles" }
-
-            onCountChanged: {
-                //mainld.source = "qrc:/ui/RemisWindow.qml"
-                mainld.sourceComponent = rwcomp
-
-                menu.reset()
-            }
-        }
-
-        onPluginLoad: window.pluginLoad(source)
-    } //*/
-
-    Item {
-        //anchors.topMargin: 0
-        anchors.top: menu.bottom
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-
-        Item {
-            anchors.fill: parent
-            focus: true
-
-            layer.enabled: config.visible || login.visible
-            layer.effect: G.FastBlur { radius: 16 }
-
-            enabled: !layer.enabled
-
-            Loader {
-                id: mainld
+            Rectangle {
                 anchors.fill: parent
+                color: "#f3f3f3"
+                opacity: 0.75
+            }
+
+            Rectangle {
+                color: "#211d1b"
+                radius: 4
+
+                width: 300
+                height: 500
+                anchors.centerIn: parent
             }
         }
 
-        PanelLogin {
-            id: login
-            anchors.fill: parent
-            model: menu.model
-            visible: !loginManager.connected
+        userComponent: Image {
+            width: 40; height: 40
+            source: "../assets/icons/im-user-offline.png"
         }
 
-        PanelConfig {
-            id: config
-            anchors.fill: parent
-            visible: false
+        passComponent: Image {
+            width: 40; height: 40
+            source: "../assets/icons/object-locked.png"
         }
     }
 
-    Component.onCompleted: {
-        showMaximized()
+    db: OrmDataBase  {
+        tables: [
+            MetaAlquiler,
+            MetaCliente,
+            MetaLlamadas,
+            MetaMovil,
+            MetaParada,
+
+            MetaUsuario, MetaPlugin,
+            MetaRol, MetaRolDetalle, MetaLog
+        ]
+
+        onError: console.log(error)
     }
+
+    mainComponent: RemisWindow {
+    }
+
+
+    Settings {
+        id: config
+        //category: "database"
+
+        property string user
+        property string pass
+        property string host
+        property string name
+
+        onUserChanged: db.user = user
+        onPassChanged: db.password = pass
+        onHostChanged: db.host = host
+        onNameChanged: db.database = name
+    }
+
+
+    config: [
+        ConfigPage {
+            title: "Base de Datos"
+            config: ConfigDB { }
+        }
+    ]
+
 }

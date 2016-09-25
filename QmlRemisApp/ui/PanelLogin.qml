@@ -106,23 +106,7 @@ Item {
                 style: TextFieldStyle { textColor: "black" }
             }
 
-            Image {
-                id: image1
-                x: 0
-                width: 40
-                height: 40
-                anchors.verticalCenter: fUser.verticalCenter
-                source: "../assets/icons/im-user-offline.png"
-            }
 
-            Image {
-                id: image2
-                x: 0
-                width: 40
-                height: 40
-                anchors.verticalCenter: fPass.verticalCenter
-                source: "../assets/icons/object-locked.png"
-            }
         }
     }
 }
