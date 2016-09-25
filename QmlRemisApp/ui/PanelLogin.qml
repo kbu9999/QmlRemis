@@ -22,6 +22,7 @@ Item {
             //model.append({"title": "pendientes"});
             model.append({"title": "alquiler"});
             model.append({"title": "clientes"});
+            model.append({"title": "paradas"});
 
             //window.menu.
             root.visible = false

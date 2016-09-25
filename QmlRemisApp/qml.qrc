@@ -45,5 +45,7 @@
         <file>assets/icons/download-later.png</file>
         <file>assets/icons/contact-new.png</file>
         <file>ui/RemisMap.qml</file>
+        <file>plugins/paradas/main.qml</file>
+        <file>assets/icons/user-group-properties.png</file>
     </qresource>
 </RCC>
