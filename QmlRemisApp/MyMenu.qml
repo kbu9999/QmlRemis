@@ -81,7 +81,7 @@ MenuView {
     Text {
         color: "#ffffff"
         text: user? user.nombre : "User"
-        Layout.minimumWidth: 60
+        Layout.minimumWidth: 50
         font.bold: true
         font.italic: true
         //verticalAlignment: Text.AlignVCenter
