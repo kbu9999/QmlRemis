@@ -39,7 +39,7 @@ Rectangle {
         menu.addAction(a1)
         menu.addAction(a2)
         menu.addAction(a3)
-        menu.addAction(a4)
+        if (user.user === "admin") menu.addAction(a4)
         a1.trigger()
     }
 

@@ -125,6 +125,7 @@ Item {
                 tooltip: "Agregar"
                 iconSource: "../../assets/icons/contact-new.png"
                 style: S.ButtonEditStyle { }
+                visible: user.user === "admin"
 
                 onClicked: tbView.addMovil()
             }
