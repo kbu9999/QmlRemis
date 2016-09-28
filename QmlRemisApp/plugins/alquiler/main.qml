@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
+import QtQuick.Layouts 1.0
 import OrmQuick 1.0
 
 import qmlremis.Basic 1.0
@@ -161,43 +162,18 @@ Item {
         }
     }
 
-    property list<Alquiler> queue
-    queue: [
-        Alquiler {
-            cliente: Cliente {
-                nombre: "Cliente 1"
-                telefono: 32756712
-            }
-            parada: paradasModel.at(0)
-            fecha: new Date()
-            origen: "Mi Casa"
-            destino: "Mi Trabajo"
-        },
 
-        Alquiler {
-            cliente: Cliente {
-                nombre: "Cliente 2"
-                telefono: 32756712
-            }
-            parada: paradasModel.at(1)
-            fecha: new Date()
-            origen: "Otro"
-            destino: "Mi Trabajo"
-        }
-
-    ]
-
-    Row  {
-        width: parent.width
+    RowLayout  {
+        //width: parent.width
+        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.top: header.bottom
         anchors.bottom: parent.bottom
         spacing: 5
 
         ListView {
-            width: parent.width / 2
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.topMargin: 5
+            Layout.fillHeight: true
+            Layout.fillWidth: true
             model: MainHandler.queue
             //model: queue
 
@@ -212,10 +188,8 @@ Item {
         }
 
         ListView {
-            width: parent.width / 2
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.topMargin: 5
+            Layout.fillHeight: true
+            Layout.fillWidth: true
             model: MainHandler.atendidos
             //model: queue
 

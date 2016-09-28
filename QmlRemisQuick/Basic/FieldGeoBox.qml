@@ -72,7 +72,7 @@ Field {
                 http.onreadystatechange = function() {
                     if (http.readyState === XMLHttpRequest.DONE) {
 
-                        if(xhr.status !== 200){  //check if "OK" (200)
+                        if(http.status !== 200){  //check if "OK" (200)
                             console.log("error http request")
                             timer.stop()
                             gsearch.status = 0

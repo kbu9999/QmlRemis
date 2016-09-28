@@ -106,10 +106,7 @@ Rectangle {
                     width: 100
                     style: S.ButtonStyle { }
 
-                    onClicked: {
-                        MainHandler.alquiler.parada = paradasModel.parada
-                        MainHandler.pushCurrentAlquiler()
-                    }
+                    onClicked: MainHandler.pushCurrentAlquiler(paradasModel.parada)
                 }
             }
 
@@ -155,17 +152,11 @@ Rectangle {
 
         RowLayout {
             anchors.fill: parent
+            anchors.margins: 10
 
             Centro {
                 id: centro
-
-                //width: parent.width / 2
-                anchors.leftMargin: 10
-                anchors.bottomMargin: 10
-                anchors.topMargin: 10
-                anchors.left: parent.left
-                anchors.bottom: parent.bottom
-                anchors.top: parent.top
+                Layout.fillHeight: true
 
                 Behavior on x { NumberAnimation { } }
                 Behavior on width { NumberAnimation { } }
@@ -173,14 +164,8 @@ Rectangle {
 
             Loader {
                 id: loader
-                //width: parent.width / 2 - 30
-                //anchors.right: map.left
                 Layout.fillWidth: true
-
-                anchors.bottom: parent.bottom
-                anchors.top: parent.top
-                anchors.left: centro.right
-                anchors.margins: 10
+                Layout.fillHeight: true
 
                 Behavior on x { NumberAnimation { } }
                 Behavior on width { NumberAnimation { } }
@@ -188,14 +173,11 @@ Rectangle {
 
             RemisMap {
                 id: map
-
-                anchors.bottom: parent.bottom
-                anchors.top: parent.top
-                anchors.right: parent.right
-                anchors.left: loader.right
-
-                anchors.margins: 10
                 visible: false
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+
+
 
                 Behavior on x { NumberAnimation { } }
                 Behavior on width { NumberAnimation { } }
@@ -210,7 +192,7 @@ Rectangle {
             PropertyChanges {
                 target: loader
                 width: 0
-                visible: false
+                //visible: false
             }
 
             PropertyChanges {
@@ -220,14 +202,12 @@ Rectangle {
         },
         State {
             name: "map_plug"
-            PropertyChanges {
-                target: loader
-                anchors.rightMargin: 37
-            }
+            //PropertyChanges { target: loader; anchors.rightMargin: 37 }
 
             PropertyChanges {
                 target: centro
-                width: 0
+                //width: 0
+                visible: false
             }
 
             PropertyChanges {

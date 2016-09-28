@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.1
+import QtQuick.Layouts 1.0
 import QtQuick.Controls.Styles 1.1
 import QtPositioning 5.2
 import QtLocation 5.2
@@ -12,7 +13,8 @@ import qmlremis.DB.Meta 1.0
 
 ListView {
     id: paradasView
-    width: 210 * count > parent.width / 2? parseInt(parent.width / 420) * 210 : 210 * count
+    //width:
+    Layout.preferredWidth: 210 * count > parent.width / 2? parseInt(parent.width / 420) * 210 : 210 * count
     height: 300
     orientation: ListView.Horizontal
     flickableDirection: Flickable.HorizontalFlick

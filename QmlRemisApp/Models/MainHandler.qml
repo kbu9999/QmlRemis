@@ -14,7 +14,7 @@ Item {
         id: ldAtendidos
         metaTable: MetaAlquiler
         loader.loadForeignKeys: true
-        loader.query: "SELECT * FROM Alquiler ORDER BY fechaAtencion desc LIMIT 10"
+        loader.query: "SELECT * FROM Alquiler WHERE NOT isNull(fechaAtencion) ORDER BY fechaAtencion desc LIMIT 10"
     }
 
     OrmModel {
@@ -88,12 +88,15 @@ Item {
         callManager.hangUp()
     }
 
-    function pushCurrentAlquiler() {
+    function pushCurrentAlquiler(parada) {
         if (!pr.alquiler) return;
 
+        pr.alquiler.parada = parada
+        pr.alquiler.llamadas = pr.llamada
         pr.alquiler.fecha = new Date()
         ldEspera.append(pr.alquiler)
         pr.alquiler.save()
+
         callManager.hangUp()
         pr.alquiler = null
     }
