@@ -53,6 +53,13 @@ SecWindow {
         }
     }
 
+    mainComponent: RemisWindow {
+    }
+
+    config: [
+        ConfigDB { }
+    ]
+
     db: OrmDataBase  {
         tables: [
             MetaAlquiler,
@@ -67,33 +74,6 @@ SecWindow {
 
         onError: console.log(error)
     }
-
-    mainComponent: RemisWindow {
-    }
-
-
-    Settings {
-        id: config
-        //category: "database"
-
-        property string user
-        property string pass
-        property string host
-        property string name
-
-        onUserChanged: db.user = user
-        onPassChanged: db.password = pass
-        onHostChanged: db.host = host
-        onNameChanged: db.database = name
-    }
-
-
-    config: [
-        ConfigPage {
-            title: "Base de Datos"
-            config: ConfigDB { }
-        }
-    ]
 
     Component.onCompleted: {
         showMaximized()

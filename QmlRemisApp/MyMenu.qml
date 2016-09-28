@@ -78,13 +78,26 @@ MenuView {
         Layout.fillWidth: true
     }
 
+    Text {
+        color: "#ffffff"
+        text: user? user.nombre : "User"
+        Layout.minimumWidth: 60
+        font.bold: true
+        font.italic: true
+        //verticalAlignment: Text.AlignVCenter
+        font.pixelSize: 15
+    }
+
     IconButton {
         width: 32; height: 32
+        color: window && window.state === "map_centro"? "#37b44b" : "#e0392e"
         hoveredColor: "white"
-        color: "#e0392e"
-        source: "../assets/icons/system-shutdown.png"
+        source: "../assets/icons/web-browser-tree.png"
 
-        onClicked: logout()
+        onClicked: {
+            if (!window) return;
+            window.state =  window.state === "map_centro"? "" : "map_centro"
+        }
     }
 
     IconButton {
@@ -105,23 +118,11 @@ MenuView {
 
     IconButton {
         width: 32; height: 32
-        color: window && window.state === "map_centro"? "#37b44b" : "#e0392e"
         hoveredColor: "white"
-        source: "../assets/icons/web-browser-tree.png"
+        color: "#e0392e"
+        source: "../assets/icons/system-shutdown.png"
 
-        onClicked: {
-            if (!window) return;
-            window.state =  window.state === "map_centro"? "" : "map_centro"
-        }
-    }
-
-    Text {
-        color: "#ffffff"
-        text: user? user.nombre : "User"
-        font.bold: true
-        font.italic: true
-        //verticalAlignment: Text.AlignVCenter
-        font.pixelSize: 15
+        onClicked: logout()
     }
 
 }
