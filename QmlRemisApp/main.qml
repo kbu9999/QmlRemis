@@ -17,8 +17,8 @@ import qmlremis.DB.Meta 1.0
 SecWindow {
     id: main
     visible: true
-    width: 800
-    height: 600
+    width: 1024
+    height: 768
 
     title: "QmlRemisApp"
     menuView: MyMenu { }
