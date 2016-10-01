@@ -138,15 +138,15 @@ Item {
                 return;
             }
 
-            //console.log("incoming: "+idLlamada)
+            console.log("incoming: "+idLlamada)
             pr.llamada = tmp
-            // set Operador pr.llamada =
+            pr.llamada = user
             pr.llamada.llamando()
             pr.cliente = ldCls.find(llamada.telefono)
         }
 
         function callStateChanged(callid, state) {
-            //console.log("callestate", state)
+            console.log("call_state", state)
             if (state === "HUNGUP") {
                 pr.llamada.colgar()
                 pr.llamada.save()

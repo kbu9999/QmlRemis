@@ -4,7 +4,7 @@ TARGET = QmlRemis-Service
 PyBase = __init__.py \
     qmlremisd.py \
     remis.py \
-    settings.py \
+    settings_example.py \
 
 PyPlugins = plugins/movilws.py \
     plugins/movil.yapsy-plugin \
