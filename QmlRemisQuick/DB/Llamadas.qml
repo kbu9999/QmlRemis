@@ -18,7 +18,7 @@ OrmObject {
     readonly property string telstring: __parseTel(telefono)
 
     function llamando() {
-        if (estado === 0) estado = 1;
+        if (estado === 0 || estado == 3) estado = 1;
         else estado = 4
     }
 

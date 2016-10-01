@@ -4,7 +4,8 @@ import OrmQuick 1.0
 
 import qmlremis.DB 1.0
 import qmlremis.DB.Meta 1.0
-//import QmlRemis 1.0
+
+import com.kbu9999.SimpleDBSec.DB 1.0
 import org.nemomobile.dbus 2.0
 
 Item {
@@ -59,6 +60,7 @@ Item {
 
         property Llamadas llamada
         property Alquiler alquiler
+        property Usuario user
         property string callid
     }
 
@@ -68,6 +70,7 @@ Item {
     readonly property alias cliente: pr.cliente
     readonly property alias llamada: pr.llamada
     readonly property alias alquiler: pr.alquiler
+    property alias user: pr.user
 
     function contestar() {
         //console.log("accept")
@@ -141,7 +144,7 @@ Item {
 
             console.debug("incoming: "+idLlamada)
             pr.llamada = tmp
-            //pr.llamada = user
+            pr.llamada = pr.user
             pr.llamada.llamando()
             pr.cliente = ldCls.find(llamada.telefono)
         }

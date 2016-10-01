@@ -4,15 +4,12 @@ import QtQuick.Layouts 1.0
 
 import qmlremis.Basic 1.0
 import qmlremis.Style 1.0 as S
-import "../Models" // 1.0
+import Models 1.0
 
 Rectangle {
     id: window
     width: 1024; height: 768
     color: "#f3f3f3"
-
-    property alias paradasModel: paradas
-
     focus: true
 
     Action { shortcut: "pgUp"; onTriggered: paradas.next() }
@@ -26,6 +23,7 @@ Rectangle {
     Action { id: a4; text: "Paradas";  onTriggered: pluginLoad("../plugins/paradas/main.qml") }
 
 
+    property alias paradasModel: paradas
     ColaModel {
         id: paradas
     }
@@ -36,6 +34,8 @@ Rectangle {
     }
 
     Component.onCompleted: {
+        MainHandler.user = user
+
         menu.addAction(a1)
         menu.addAction(a2)
         menu.addAction(a3)

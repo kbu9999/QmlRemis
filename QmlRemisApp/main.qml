@@ -7,9 +7,6 @@ import com.kbu9999.SimpleDBSec 1.0
 import com.kbu9999.SimpleDBSec.Meta 1.0
 
 import "ui"
-import Models 1.0
-import qmlremis.Style 1.0
-import qmlremis.Basic 1.0
 import qmlremis.DB.Meta 1.0
 
 SecWindow {
