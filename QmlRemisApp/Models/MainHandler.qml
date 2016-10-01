@@ -126,6 +126,7 @@ Item {
         //propertiesEnabled: true
 
         function incomingCall(accountID, callID, from) {
+            console.log(accountID, callID, from)
             if (pr.llamada) return;
 
             //var idLlamada = from.replace(/<sip:(\d+)@.*>/,'$1')

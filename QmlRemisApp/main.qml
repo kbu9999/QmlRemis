@@ -1,8 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Window 2.1
 import QtQuick.Controls 1.1
-import QtQuick.Dialogs 1.2
-import Qt.labs.settings 1.0
 
 import OrmQuick 1.0
 import com.kbu9999.SimpleDBSec 1.0
