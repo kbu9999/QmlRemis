@@ -141,7 +141,7 @@ Item {
 
             console.debug("incoming: "+idLlamada)
             pr.llamada = tmp
-            pr.llamada = user
+            //pr.llamada = user
             pr.llamada.llamando()
             pr.cliente = ldCls.find(llamada.telefono)
         }
