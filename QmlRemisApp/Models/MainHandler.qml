@@ -133,12 +133,12 @@ Item {
             var tmp = ldCall.loadOne(idLlamada)
             pr.callid = callID
             if (!tmp)  {
-                console.log("Error no se encuentra el ID de la LLamada ", idLlamada)
+                console.debug("Error no se encuentra el ID de la LLamada ", idLlamada)
                 callManager.hangUp()
                 return;
             }
 
-            console.log("incoming: "+idLlamada)
+            console.debug("incoming: "+idLlamada)
             pr.llamada = tmp
             pr.llamada = user
             pr.llamada.llamando()
@@ -146,7 +146,7 @@ Item {
         }
 
         function callStateChanged(callid, state) {
-            console.log("call_state", state)
+            console.debug("call_state", state)
             if (state === "HUNGUP") {
                 pr.llamada.colgar()
                 pr.llamada.save()
