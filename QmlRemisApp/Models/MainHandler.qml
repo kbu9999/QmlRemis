@@ -142,7 +142,7 @@ Item {
                 return;
             }
 
-            console.debug("incoming: "+idLlamada)
+            console.debug("incoming: "+idLlamada, tmp.estado)
             pr.llamada = tmp
             pr.llamada.usuario = pr.user
             pr.llamada.llamando()
