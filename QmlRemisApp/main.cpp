@@ -19,6 +19,7 @@ int main(int argc, char *argv[])
     app.setOrganizationName("KISystem");
     app.setOrganizationDomain("kisystem.com.ar");
     app.setApplicationName("QmlRemis");
+    qDebug()<<"version: 0.2.3";
 
     QQmlApplicationEngine engine;
     engine.addImportPath("../qml");
