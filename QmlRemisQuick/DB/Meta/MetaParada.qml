@@ -8,7 +8,8 @@ OrmMetaTable {
     attributes:  [ 
         OrmMetaAttribute { property: 'idParada'; attribute: 'idParada';  index: 0  }, 
         OrmMetaAttribute { property: 'parada'; attribute: 'Parada';   }, 
-        OrmMetaAttribute { property: 'gps'; attribute: 'gps_pos';   }
+        OrmMetaAttribute { property: 'lat'; attribute: 'lat';   },
+        OrmMetaAttribute { property: 'lon'; attribute: 'lon';   }
     ]
     relations: [
         OrmMetaRelation { relationTableName: "Movil"; property: "moviles"

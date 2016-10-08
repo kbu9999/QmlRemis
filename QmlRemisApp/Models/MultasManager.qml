@@ -30,7 +30,7 @@ Item {
         multas.append(nm)
         multas.commit()
 
-        LoginManager.addLog("ha multado con "+mins+"Min al Movil: "+movil.idMovil)
+        //addLog("ha multado con "+mins+"Min al Movil: "+movil.idMovil)
     }
 
     Timer {

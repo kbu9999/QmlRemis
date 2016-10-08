@@ -14,9 +14,11 @@ OrmMetaTable {
         OrmMetaAttribute { property: 'telefono'; attribute: 'telefono';   },
         OrmMetaAttribute { property: 'fecha'; attribute: 'fecha';   }, 
         OrmMetaAttribute { property: 'origen'; attribute: 'origen';   }, 
-        OrmMetaAttribute { property: 'origen_gps'; attribute: 'origen_gps';   }, 
-        OrmMetaAttribute { property: 'destino'; attribute: 'destino';   }, 
-        OrmMetaAttribute { property: 'destino_gps'; attribute: 'destino_gps';   }, 
+        OrmMetaAttribute { property: 'origen_lat'; attribute: 'origen_lat'; },
+        OrmMetaAttribute { property: 'origen_lon'; attribute: 'origen_lon'; },
+        OrmMetaAttribute { property: 'destino'; attribute: 'destino'; },
+        OrmMetaAttribute { property: 'destino_lat'; attribute: 'destino_lat'; },
+        OrmMetaAttribute { property: 'destino_lon'; attribute: 'destino_lon'; },
         OrmMetaAttribute { property: 'km'; attribute: 'km';   }, 
         OrmMetaAttribute { property: 'fechaAtencion'; attribute: 'fechaAtencion';   } 
     ]

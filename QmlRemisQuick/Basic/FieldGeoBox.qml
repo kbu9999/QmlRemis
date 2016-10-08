@@ -18,7 +18,7 @@ Field {
 
 
     signal searched()
-    signal gpsSelected(string dir, string lat, string lon)
+    signal gpsSelected(string dir, var coordinate)
 
     editorDelegate: TextField {
         id: gsearch
@@ -29,6 +29,7 @@ Field {
         style: TextFieldStyle { textColor: "black" }
 
         onStatusChanged: {
+            //console.log(status)
             switch(status) {
             case 1:
                 loading.visible = true
@@ -63,6 +64,7 @@ Field {
             id: timer; interval: 5000
             //onTriggered: search()
             onTriggered: gsearch.status = 0
+
             function search() {
                 if (!geoSearch.editMode) return;
 
@@ -85,7 +87,7 @@ Field {
                         if (results.length === 1) {
                             //console.log("fgeo: es uno")
                             var p = results[0].geometry.location
-                            geoSearch.gpsSelected(gsearch.text, p.lat, p.lng)
+                            geoSearch.gpsSelected(gsearch.text, QtPositioning.coordinate(p.lat, p.lng))
                             gsearch.status = 0
                             geoSearch.editMode = false
                             return;
@@ -131,9 +133,11 @@ Field {
                 MenuItem {
                     text: address
                     onTriggered: {
+                        //console.log("click")
                         gsearch.status = 0
                         geoSearch.editMode = false
-                        geoSearch.gpsSelected(gsearch.text, lat, lon)
+                        geoSearch.gpsSelected(gsearch.text, QtPositioning.coordinate(lat, lon))
+                        popup.toggleShow()
                     }
                 }
 

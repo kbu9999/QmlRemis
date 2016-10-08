@@ -3,14 +3,13 @@ import OrmQuick 1.0
 
 import "Meta"
 
-OrmObject {
+OrmObjectMap {
     id: main
     metaTable: MetaMovil
     
     property int idMovil
     property Parada parada
     property string modelo: ""
-    property string ultimaPos
     property int estado //0: out; 1: disponible; 2: ocupado; 3: multado
     property date added
     property date endMulta

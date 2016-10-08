@@ -77,6 +77,7 @@ if __name__ == "__main__":
         print "init plugs"
 
         for plugin in manager.getAllPlugins():
+            print plugin.url
             plo = plugin.plugin_object
             print plo.url()
             root.putChild(plo.url(), plo.createResource(qmlremis))

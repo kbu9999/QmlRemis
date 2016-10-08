@@ -156,7 +156,9 @@ Item {
             }
         }
 
-        TableViewColumn { id: cgps; role: "gps" }
+        //TableViewColumn { id: cgps; role: "gps" }
+        TableViewColumn { role: "lat"; width: 80 }
+        TableViewColumn { role: "lon"; width: 80 }
 
         onClicked: currentRow = row
     }
@@ -170,7 +172,7 @@ Item {
 
             anchorPoint.x: img.width/2
             anchorPoint.y: img.height/2
-            coordinate: cliente.coordinate
+            coordinate: cliente.coordValid? cliente.coordinate : map.center
 
             sourceItem:  Image {
                 id: img
@@ -185,7 +187,7 @@ Item {
                     onPressed: map.gesture.enabled = false
                     onReleased: {
                         map.gesture.enabled = true;
-                        cliente.setGps(mqi.coordinate)
+                        mqi.cliente.coordinate = mqi.coordinate
                     }
                 }
             }

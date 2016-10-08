@@ -164,11 +164,11 @@ Item {
         MapQuickItem {
             id: mqi
 
-            property QtObject movil
+            property Movil movil
 
             anchorPoint.x: img.width/2
             anchorPoint.y: img.height
-            coordinate: movil.gps.latitude? movil.gps : map.center
+            coordinate: movil.coordValid? movil.coordinate : map.center
             sourceItem:  Image {
                 id: img
                 source: {
@@ -198,7 +198,7 @@ Item {
                     onReleased: {
                         map.gesture.enabled = true;
                         if (movil)
-                            movil.gps = mqi.coordinate
+                            movil.coordinate = mqi.coordinate
                     }
                 }
             }

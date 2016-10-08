@@ -48,7 +48,7 @@ Item {
             id: geofield
             title: "Direccion"
             role: "direccion"
-            gpsRole: "gps"
+            gpsRole: "coordinate"
             mapIcon: "../assets/icons/go-home.png"
             animLoading: "../assets/loading.gif"
 
@@ -63,9 +63,9 @@ Item {
                 //map.addMapItem(showClMap)
                 if (window.state === "" ) window.state = "map_centro";
 
-                if (!grid1.ormObject) return
-                grid1.ormObject.direccion = dir
-                grid1.ormObject.gps = lat+", "+lon
+                if (!MainHandler.cliente) return
+                MainHandler.cliente.direccion = dir
+                MainHandler.cliente.coordinate = coordinate
 
             }
         }
@@ -105,7 +105,7 @@ Item {
             style: S.ButtonEditStyle { }
             onClicked: {
                 map.clearMapItems()
-                map.addMapItem(showMap.createObject(map, { cliente: main.cliente } ))
+                map.addMapItem(showMap.createObject(map, { cliente: MainHandler.cliente } ))
                 if (window.state == "")
                     window.state = "Stack"
                 else
@@ -137,7 +137,7 @@ Item {
                         map.gesture.enabled = true;
 
                         if (MainHandler.cliente)
-                            MainHandler.cliente.setGps(mqi.coordinate)
+                            MainHandler.cliente.coordinate = mqi.coordinate
                     }
                 }
             }
@@ -166,8 +166,10 @@ Item {
                     onReleased: map.gesture.enabled = true;
                     onDoubleClicked: {
                         if (MainHandler.cliente) {
-                            MainHandler.cliente.setGps(mqi.coordinate)
+                            MainHandler.cliente.direccion = address
+                            MainHandler.cliente.coordinate = mqi.coordinate
                             geofield.hideEditor()
+                            map.geoModel = 0
                         }
                     }
                 }

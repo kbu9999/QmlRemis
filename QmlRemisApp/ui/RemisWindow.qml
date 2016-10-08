@@ -2,6 +2,7 @@ import QtQuick 2.2
 import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.0
 
+import qmlremis.DB 1.0
 import qmlremis.Basic 1.0
 import qmlremis.Style 1.0 as S
 import Models 1.0

@@ -66,6 +66,7 @@ class Remis():
         self.operws.updateCola(idParada)
         self.movilws.colaChanged(idParada, cola)
         
+    
     def updateEspera(self) :
         espera = self.session.query(Alquiler)\
             .filter(Alquiler.fechaAtencion == None).all()
@@ -77,6 +78,7 @@ class Remis():
             else :
                 print "no hay movil"
         self.operws.updateEspera()
+    #----------- echo 
     
     def aceptarAlquiler(self, movil, idAlquiler) :
         print "Aceptar - Alquiler: %s" % idAlquiler

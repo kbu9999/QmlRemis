@@ -15,7 +15,7 @@ Item {
         id: ldAtendidos
         metaTable: MetaAlquiler
         loader.loadForeignKeys: true
-        loader.query: "SELECT * FROM Alquiler WHERE NOT isNull(fechaAtencion) ORDER BY fechaAtencion desc LIMIT 10"
+        loader.query: "SELECT * FROM VAtendidos LIMIT 10"
     }
 
     OrmModel {
@@ -55,11 +55,10 @@ Item {
 
     QtObject {
         id: pr
-        property Cliente cliente: Cliente {
-        }
+        property Cliente cliente: Cliente { }
+        property Alquiler alquiler: Alquiler { }
 
         property Llamadas llamada
-        property Alquiler alquiler
         property Usuario user
         property string callid
     }
@@ -82,7 +81,7 @@ Item {
         pr.alquiler.cliente = pr.cliente
         //pr.alquiler.fecha = new Date()
         pr.alquiler.origen = pr.cliente.direccion
-        pr.alquiler.origen_gps = pr.cliente.gps
+        pr.alquiler.origen_gps = pr.cliente.coordinate
     }
 
     function colgar() {

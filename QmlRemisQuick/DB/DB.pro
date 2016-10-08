@@ -5,6 +5,7 @@ TARGET = $$qtLibraryTarget($$TARGET)
 uri = qmlremis.DB
 
 QMLFILES = qmldir \
+    OrmObjectMap.qml \
     Alquiler.qml \
     Cliente.qml \
     Llamadas.qml \

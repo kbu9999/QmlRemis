@@ -43,5 +43,7 @@
         <file>assets/icons/user-group-properties.png</file>
         <file>MyMenu.qml</file>
         <file>assets/icons/kick-user.png</file>
+        <file>assets/icons/im-user.png</file>
+        <file>assets/icons/im-user-away.png</file>
     </qresource>
 </RCC>

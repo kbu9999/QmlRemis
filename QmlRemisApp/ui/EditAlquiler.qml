@@ -8,10 +8,13 @@ import qmlremis.Basic 1.0
 import qmlremis.Style 1.0 as S
 import com.kbu9999.FieldPanel 1.0
 
+import Models 1.0
+
 Panel {
     id: edAlq
 
     editIcon: "../assets/icons/document-edit.png"
+    ormObject: MainHandler.alquiler
 
     titleDelegate: S.TextStyled {
         text: styleData.title
@@ -28,7 +31,7 @@ Panel {
     FieldGeoBox {
         title: "Origen"
         role: "origen"
-        gpsRole: "origen_pos"
+        gpsRole: "origen_gps"
         //model: map.geoModel
         mapIcon: "../assets/icons/go-home.png"
         animLoading: "../assets/loading.gif"
@@ -36,18 +39,40 @@ Panel {
         onSearched: {
             map.geoModel = gmodel
         }
+
+        onGpsSelected: {
+            map.geoModel = 0
+            if (!ormObject) return;
+
+            ormObject[role] = dir
+            ormObject[gpsRole] = coordinate
+
+            map.fitViewPortAlquiler()
+            //console.log(gpsRole, ormObject[gpsRole])
+        }
     }
 
     FieldGeoBox {
         title: "Destino"
         role: "destino"
-        gpsRole: "destino_pos"
+        gpsRole: "destino_gps"
         //model: map.geoModel
         mapIcon: "../assets/icons/go-home.png"
         animLoading: "../assets/loading.gif"
 
         onSearched: {
             map.geoModel = gmodel
+        }
+
+        onGpsSelected: {
+            map.geoModel = 0
+            if (!ormObject) return;
+
+            ormObject[role] = dir
+            ormObject[gpsRole] = coordinate
+
+            map.fitViewPortAlquiler()
+            //console.log(gpsRole, ormObject[gpsRole])
         }
     }
 

@@ -11,7 +11,8 @@ OrmMetaTable {
         OrmMetaAttribute { property: 'nombre'; attribute: 'nombre';   }, 
         OrmMetaAttribute { property: 'direccion'; attribute: 'direccion';   }, 
         OrmMetaAttribute { property: 'descripcion'; attribute: 'descripcion';   }, 
-        OrmMetaAttribute { property: 'gps'; attribute: 'gps_pos';   }
+        OrmMetaAttribute { property: 'lat'; attribute: 'lat';   },
+        OrmMetaAttribute { property: 'lon'; attribute: 'lon';   }
     ]
 
     url: "../Cliente.qml"

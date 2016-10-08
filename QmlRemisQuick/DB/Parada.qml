@@ -5,28 +5,12 @@ import QtPositioning 5.0
 import "Meta"
 //import Models 1.0
 
-OrmObject {
+OrmObjectMap {
     id: main
     metaTable: MetaParada
     
     property int idParada 
-    property string parada 
-    property string gps
-    property var coordinates: QtPositioning.coordinate()
-
-    function setGps(coord) {
-        gps = coord.latitude.toFixed(6) + ", " + coord.longitude.toFixed(6)
-    }
-
-    onGpsChanged: {
-        var l = gps.split(',')
-        if (l.length < 2) {
-            coordinates = QtPositioning.coordinate()
-            return;
-        }
-
-        coordinates = QtPositioning.coordinate(l[0], l[1])
-    }
+    property string parada
      
     property list<OrmObject> moviles
     property bool __loaded: false
@@ -36,7 +20,7 @@ OrmObject {
 
         add.added = new Date()
         add.estado = 1
-        add.ultimaPos = gps
+        add.coordinate = coordinate
         add.parada = this
 
         append(MetaMovil, add);
