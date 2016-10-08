@@ -5,6 +5,7 @@ from twisted.python import log
 from datetime import datetime
 import time
 
+from sqlalchemy.sql.expression import text
 from db import Parada, Alquiler, Llamadas, Cliente
 
 class MySeq(fastagi.InSequence) :
@@ -29,10 +30,13 @@ class RemisAgi() :
         seq.llamada = Llamadas(telefono)
         lst = self.session.query(Cliente).filter(Cliente.telefono == telefono)
         if lst :
+            log.msg("cliente no encontrado tel: %s" % telefono)
             seq.cliente = lst.first()
         if seq.cliente :
             if seq.cliente.checkGps() is False:
+                log.msg("cliente: %d %s - gps no valido" % (seq.cliente.idCliente, seq.cliente.nombre))
                 seq.cliente = None
+                
         self.session.add(seq.llamada)
         self.session.commit()
         
@@ -42,6 +46,10 @@ class RemisAgi() :
             self.session.commit()
         
     def addAlquiler(self, seq) :
+        txt = text('SELECT * FROM VParadaDist WHERE idCliente = :id')
+        p = self.session.query(Parada)\
+            .from_statement(txt.params(id=seq.cliente.idCliente)).first()
+        """
         paradas = self.session.query(Parada).all()
         p = paradas[0]
         d = paradaDist(p, seq.cliente)
@@ -51,7 +59,11 @@ class RemisAgi() :
             if d2 < d :
                 d = d2
                 p = pi
-        alquiler = Alquiler(seq.llamada, seq.cliente, p.idParada)
+        """
+        idParada = None
+        if p :
+            idParada = p.idParada
+        alquiler = Alquiler(seq.llamada, seq.cliente, idParada)
         self.session.add(alquiler)
         self.session.commit()
         self.remis.updateEspera()

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from sqlalchemy import Column, String, Integer, ForeignKey, DateTime, Time
+from sqlalchemy import Column, Float, String, Integer, ForeignKey, DateTime, Time
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
@@ -36,25 +36,21 @@ class Cliente(Base):
     nombre = Column(String(45))
     direccion = Column(String(45))
     descripcion = Column(String(45))
-    gps_pos = Column(String(45))
+    #gps_pos = Column(String(45))
+    lat = Column(Float)
+    lon = Column(Float)
     
     def __init__(self, telefono, nombre):
         self.nombre = nombre
         self.telefono = telefono
         
     def checkGps(self) :
-        if not self.gps_pos : 
+        if self.lat == None or self.lat == 0 :
+            return False
+        if self.lon == None or self.lon == 0 :
             return False
         
-        gps = self.gps_pos.split(',')
-        try:
-            arr = (float(gps[0]), float(gps[1]))
-            if arr[0] == 0 or arr[1] == 0 :
-                return False
-            else :
-                return True
-        except (IndentationError, ValueError) :
-            return False
+        return True
         
 class Llamadas(Base):
     __tablename__ = "Llamadas"
@@ -77,7 +73,9 @@ class Alquiler(Base):
     telefono = Column(Integer, ForeignKey("Llamadas.telefono"))
     fecha = Column(DateTime, ForeignKey("Llamadas.fecha"))
     origen = Column(String(45), ForeignKey("Cliente.direccion"))
-    origen_gps = Column(String(45), ForeignKey("Cliente.gps_pos"))
+    #origen_gps = Column(String(45), ForeignKey("Cliente.gps_pos"))
+    origen_lat = Column(Float)
+    origen_lon = Column(Float)
     fechaAtencion = Column(DateTime)
     #cliente = relationship("Cliente", foreign_keys="idCliente")
     #llamada = relationship("Llamadas")
@@ -91,22 +89,25 @@ class Alquiler(Base):
         self.telefono = llamada.telefono
         self.fecha = llamada.fecha
         self.origen = cliente.direccion
-        self.origen_gps = cliente.gps_pos
+        self.origen_lat = cliente.lat
+        self.origen_lon = cliente.lon
         
 class Movil(Base):
     __tablename__ = "Movil"
     idMovil = Column(Integer, primary_key=True)
     idParada = Column(Integer)
     modelo = Column(String(45))
-    ultimaPos = Column(String(45))
+    #ultimaPos = Column(String(45))
     estado = Column(Integer)
     added = Column(DateTime)
-    
+    lat = Column(Float)
+    lon = Column(Float)
     
 class Parada(Base) :
     __tablename__ = "Parada"
     idParada = Column(Integer, primary_key=True)
-    gps_pos = Column(String(45))
-        
-        
+    Parada = Column(String(45))
+    #gps_pos = Column(String(45))
+    lat = Column(Float)
+    lon = Column(Float)
   
