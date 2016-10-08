@@ -128,7 +128,7 @@ Item {
         //propertiesEnabled: true
 
         function incomingCall(accountID, callID, from) {
-            console.log(accountID, callID, from)
+            //console.log(accountID, callID, from)
             if (pr.llamada) return;
 
             //var idLlamada = from.replace(/<sip:(\d+)@.*>/,'$1')
@@ -141,11 +141,11 @@ Item {
                 return;
             }
 
-            console.debug("incoming: "+idLlamada, tmp.estado)
             pr.llamada = tmp
             pr.llamada.usuario = pr.user
             pr.llamada.llamando()
             pr.cliente = ldCls.find(llamada.telefono)
+            //console.debug("incoming: "+idLlamada, tmp.estado)
         }
 
         function callStateChanged(callid, state) {
