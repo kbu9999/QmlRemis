@@ -1,8 +1,9 @@
 #! /usr/bin/env python
 """Simple FastAGI server using starpy"""
 from starpy import fastagi
-import logging, time
+from twisted.python import log
 from datetime import datetime
+import time
 
 from db import Parada, Alquiler, Llamadas, Cliente
 
@@ -17,9 +18,11 @@ class MySeq(fastagi.InSequence) :
         return self.results[ len(self.results) - 1 ]
 
 class RemisAgi() :
-    def __init__(self, remis)  :
-        self.remis = remis
-        self.session = remis.session
+    def __init__(self, session, ws)  :
+        self.session = session
+        self.ws = ws
+        log.msg(ws)
+        ws.updateEspera()
     
     def checkLlamada(self, seq, telefono) :
         #print telefono

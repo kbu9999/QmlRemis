@@ -18,7 +18,7 @@ accounts:
   interface: default
   keepAlive: false
   mailbox: 
-  port: 5060
+  port: 5061
   presenceEnabled: false
   presencePublishSupported: false
   presenceSubscribeSupported: false

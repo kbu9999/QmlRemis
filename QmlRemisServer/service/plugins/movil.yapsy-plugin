@@ -1,5 +1,5 @@
 [Core]
-Name = MovilPlugin
+Name = Movil
 Module = movilws
 
 [Documentation]

@@ -1,7 +1,7 @@
 # QmlRemis Notify systemd service file
 
 [Unit]
-Description=QmlRemisServer
+Description=QmlRemis WebSocket Server
 After=network.target
 After=syslog.target
 
@@ -13,7 +13,7 @@ WantedBy=multi-user.target
 User=root
 Group=root
 #PermissionsStartOnly=true
-ExecStart=/usr/share/qmlremis/service/qmlremisd.py
+ExecStart=/usr/bin/twistd -y /usr/share/qmlremis/service/socketService.py -n
 #TimeoutSec=600
 #Restart=on-failure
 #RuntimeDirectory=mysqld
