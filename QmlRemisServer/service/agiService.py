@@ -73,7 +73,7 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 #connect websocket
-ws = OperClientFactory("ws://localhost:8080/oper")
+ws = OperClientFactory("ws://localhost:9000/Oper")
 connectWS(ws)
 
 ragi = agi.RemisAgi(session, ws.protocol())

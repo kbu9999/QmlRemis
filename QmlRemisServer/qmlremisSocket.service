@@ -14,6 +14,7 @@ User=root
 Group=root
 #PermissionsStartOnly=true
 ExecStart=/usr/bin/twistd -y /usr/share/qmlremis/service/socketService.py -n
+WorkingDirectory=/usr/share/qmlremis/service
 #TimeoutSec=600
 #Restart=on-failure
 #RuntimeDirectory=mysqld

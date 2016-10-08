@@ -21,7 +21,7 @@ import settings
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
-logFile = logfile.LogFile.fromFullPath('/var/log/qmlemis/webocket.log')
+logFile = logfile.LogFile.fromFullPath('/var/log/qmlremis/webocket.log')
 log.addObserver(log.FileLogObserver(logFile).emit)
 
 #connect mysql 
