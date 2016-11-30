@@ -175,5 +175,9 @@ Item {
             call("accept", pr.callid)
         }
     }
+
+    function placeCall(tel) {
+        call("placeCall", "1140922753", "0", tel)
+    }
 }
 

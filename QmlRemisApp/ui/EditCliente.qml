@@ -1,6 +1,5 @@
 import QtQuick 2.2
-import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.2
+import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
 import QtPositioning 5.2
 import QtLocation 5.2
@@ -17,7 +16,7 @@ Item {
     implicitHeight: 200
     implicitWidth: 300
 
-    Panel {
+    S.Panel {
         id: grid1
         anchors.fill: parent
         anchors.rightMargin: 50
@@ -25,19 +24,6 @@ Item {
         columnSpacing: 0
 
         ormObject: MainHandler.cliente
-        editIcon: "../assets/icons/document-edit.png"
-
-        titleDelegate: S.TextStyled {
-            text: styleData.title
-            selectedColor: "#e0392e"
-            selected: styleData.isCurrentIndex
-            font.bold: true
-        }
-
-        showDelegate: S.TextStyled {
-            text: styleData.value? styleData.value : ""
-            selectedColor: "#e0392e"
-        }
 
         FieldTextEdit {
             title: "Familia"
@@ -66,7 +52,6 @@ Item {
                 if (!MainHandler.cliente) return
                 MainHandler.cliente.direccion = dir
                 MainHandler.cliente.coordinate = coordinate
-
             }
         }
 
@@ -90,26 +75,18 @@ Item {
         width: 40
         spacing: 4
 
-        Button {
-            tooltip: "Guardar"
+        S.ButtonEdit {
+            text: "Guardar"
             iconSource: "../assets/icons/document-save.png"
-            style: S.ButtonEditStyle { }
             visible: grid1.ormObject? grid1.ormObject.dirt : false
 
             onClicked: if (MainHandler.cliente) MainHandler.cliente.save()
         }
 
-        Button {
-            tooltip: "Ubicar"
-            iconSource: "../assets/icons/world.png"
-            style: S.ButtonEditStyle { }
-            onClicked: {
+        S.ButtonMap {
+            onLocate: {
                 map.clearMapItems()
                 map.addMapItem(showMap.createObject(map, { cliente: MainHandler.cliente } ))
-                if (window.state == "")
-                    window.state = "Stack"
-                else
-                    window.state = "";
             }
         }
     }

@@ -12,7 +12,9 @@ OrmObject {
     readonly property bool coordValid: coordinate != ""
 
     onLoaded: {
-        coordinate = QtPositioning.coordinate(lat, lon)
+        if (lon != 0 && lat != 0)
+            coordinate = QtPositioning.coordinate(lat, lon)
+        //console.log("ccord", coordinate, coordValid)
     }
 
     onCoordinateChanged: {

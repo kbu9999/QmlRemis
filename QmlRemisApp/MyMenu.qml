@@ -1,5 +1,6 @@
 import QtQuick 2.0
-import QtQuick.Layouts 1.0
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.1
 
 import com.kbu9999.SimpleDBSec 1.0
 import com.kbu9999.default 1.0
@@ -94,9 +95,19 @@ MenuView {
         hoveredColor: "white"
         source: "../assets/icons/web-browser-tree.png"
 
+        property string  __oldstate
+        property int setstate: 0
+        property var __wstates: ["map_centro", "map_plug"]
+
         onClicked: {
-            if (!window) return;
-            window.state =  window.state === "map_centro"? "" : "map_centro"
+            if (window.state !== __wstates[setstate]) {
+                __oldstate = window.state
+                window.state = __wstates[setstate]
+            }
+            else {
+                window.state = __oldstate
+                __oldstate = ""
+            }
         }
     }
 

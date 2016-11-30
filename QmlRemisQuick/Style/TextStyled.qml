@@ -1,7 +1,7 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.1
+import QtQuick.Controls 2.0
 
-Text {
+Label {
     property bool selected: false
     property color selectedColor: "white"
 

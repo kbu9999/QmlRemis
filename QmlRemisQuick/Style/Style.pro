@@ -5,11 +5,17 @@ TARGET = $$qtLibraryTarget($$TARGET)
 uri = qmlremis.Style
 
 DISTFILES = qmldir \
-    ButtonEditStyle.qml \
-    TableViewStyle.qml \
-    TabViewStyle.qml \
+    #TableViewStyle.qml \
+    #TabViewStyle.qml \
     TextStyled.qml \
-    ButtonStyle.qml
+    #ButtonEditStyle.qml \
+    #ButtonStyle.qml \
+    Button.qml \
+    ButtonEdit.qml \
+    ButtonMap.qml \
+    Panel.qml \
+    TableView.qml \
+    TableViewColumn.qml
 
 
 include(../qmlmodule.pri)

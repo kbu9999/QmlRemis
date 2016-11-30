@@ -20,8 +20,8 @@ Rectangle {
 
     Action { id: a2; text: "Alquiler"; onTriggered: pluginLoad("../plugins/alquiler/main.qml") }
     Action { id: a3; text: "Clientes"; onTriggered: pluginLoad("../plugins/clientes/main.qml") }
-    Action { id: a1; text: "Moviles";  onTriggered: pluginLoad("../plugins/moviles/main.qml") }
-    Action { id: a4; text: "Paradas";  onTriggered: pluginLoad("../plugins/paradas/main.qml") }
+    Action { id: a1; text: "Moviles";  onTriggered: pluginLoad( "../plugins/moviles/main.qml") }
+    Action { id: a4; text: "Paradas";  onTriggered: pluginLoad( "../plugins/paradas/main.qml") }
 
 
     property alias paradasModel: paradas
@@ -79,33 +79,30 @@ Rectangle {
                 anchors.bottom: parent.bottom
                 spacing: 2
 
-                Button {
+                S.Button {
                     text: "Contestar";
                     enabled: caller.llstate == 1
                     property color color: "green"
                     width: parent.width
-                    style: S.ButtonStyle { }
 
                     onClicked: MainHandler.contestar()
                 }
-                Button {
+                S.Button {
                     text: "Cortar";
                     enabled: caller.llstate == 2
                     property color color: "red"
                     width: parent.width
-                    style: S.ButtonStyle { }
 
                     onClicked: MainHandler.colgar()
                 }
 
                 Rectangle { color: "#d9d9d9"; width: parent.width; height: 1 }
 
-                Button {
+                S.Button {
                     text: "Agregar";
                     enabled: MainHandler.alquiler? true : false
                     property color color: "#ff8a05"
                     width: 100
-                    style: S.ButtonStyle { }
 
                     onClicked: MainHandler.pushCurrentAlquiler(paradasModel.parada)
                 }
@@ -167,9 +164,7 @@ Rectangle {
                 id: loader
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-
-                Behavior on x { NumberAnimation { } }
-                Behavior on width { NumberAnimation { } }
+                Layout.minimumWidth: 400
             }
 
             RemisMap {
@@ -177,11 +172,7 @@ Rectangle {
                 visible: false
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-
-
-
-                Behavior on x { NumberAnimation { } }
-                Behavior on width { NumberAnimation { } }
+                Layout.minimumWidth: 200
             }
         }
     }
@@ -192,8 +183,8 @@ Rectangle {
 
             PropertyChanges {
                 target: loader
-                width: 0
-                //visible: false
+                //width: 0
+                visible: false
             }
 
             PropertyChanges {

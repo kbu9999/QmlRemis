@@ -1,12 +1,11 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.1
-import QtQuick.Controls.Styles 1.1
-import QtLocation 5.2
 import OrmQuick 1.0
+import QtLocation 5.2
+import QtQuick.Controls 2.0
 
 import qmlremis.Basic 1.0
 import com.kbu9999.Columns 1.0
-import qmlremis.Style 1.0
+import qmlremis.Style 1.0 as S
 import qmlremis.DB 1.0
 import qmlremis.DB.Meta 1.0
 
@@ -22,7 +21,7 @@ Item {
 
         border.color: "#d9d9d9"
 
-        TextStyled {
+        S.TextStyled {
             x: 15
             anchors.verticalCenter: parent.verticalCenter
             text: "Administracion de Clientes"
@@ -38,15 +37,22 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             onTextChanged: filter.setFilterFixedString(text)
             Keys.onEscapePressed: text = ""
+
+            background: Rectangle {
+              implicitWidth: 120
+              implicitHeight: 36
+              color: parent.enabled ? "white" : "#353637"
+              border.color: parent.enabled ? "#5c5c5c" : "transparent"
+          }
         }
 
-        ExclusiveGroup { id: exl }
+        /*ButtonGroup { id: exl }
 
         RadioButton {
             x: 395
             y: 8
             text: qsTr("Familia")
-            exclusiveGroup: exl
+            ButtonGroup.group: exl
             onClicked: filter.filterProperty = "nombre"
         }
 
@@ -54,32 +60,24 @@ Item {
             x: 395
             y: 31
             text: qsTr("Direccion")
-            exclusiveGroup: exl
+            ButtonGroup.group: exl
             onClicked: filter.filterProperty = "direccion"
-        }
+        } //*/
 
-        Button {
-            x: 490; y: 18
-            //width: 36; height: 36
-            style: ButtonEditStyle { }
-            iconSource: "../../assets/icons/world.png"
-            onClicked: {
-                if (window.state === "map_plug" ) {
-                    window.state = "";
-                    return;
-                }
-
-                window.state = "map_plug"
+        S.ButtonMap {
+            x: 400;
+            anchors.verticalCenter: parent.verticalCenter
+            setstate: 1
+            onLocate: {
                 map.clearMapItems()
                 map.geoItem = showMap
                 map.geoModel = filter
             }
         }
 
-        Button {
-            x: 530; y: 18
-            //width: 36; height: 36
-            style: ButtonEditStyle { }
+        S.ButtonEdit {
+            x: 445;
+            anchors.verticalCenter: parent.verticalCenter
             iconSource: "../../assets/icons/document-save.png"
             onClicked: ld.commit()
         }
@@ -99,7 +97,7 @@ Item {
 
     Component.onCompleted: ld.load()
 
-    TableView {
+    S.TableView {
         id: tbView
         width: parent.width
         anchors.top: header.bottom
@@ -107,11 +105,9 @@ Item {
 
         model: filter
 
-        style: TableViewStyle { }
-
         ButtomColumn { source: "../../assets/icons/user-group-properties.png" }
 
-        TableViewColumn {
+        S.TableViewColumn {
             title: "Telefono"
             role: "telefono"
             width: 80
@@ -157,8 +153,8 @@ Item {
         }
 
         //TableViewColumn { id: cgps; role: "gps" }
-        TableViewColumn { role: "lat"; width: 80 }
-        TableViewColumn { role: "lon"; width: 80 }
+        S.TableViewColumn { role: "lat"; width: 80 }
+        S.TableViewColumn { role: "lon"; width: 80 }
 
         onClicked: currentRow = row
     }

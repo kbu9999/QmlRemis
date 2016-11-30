@@ -1,7 +1,6 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.1
-import QtQuick.Controls.Styles 1.1
-import QtQuick.Layouts 1.0
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.1
 import OrmQuick 1.0
 
 import qmlremis.Basic 1.0

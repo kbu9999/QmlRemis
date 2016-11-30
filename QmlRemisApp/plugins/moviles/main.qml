@@ -1,6 +1,5 @@
 import QtQuick 2.2
-import QtQuick.Controls 1.2
-import QtQuick.Controls.Styles 1.2
+import QtQuick.Controls 2.0
 import OrmQuick 1.0
 import QtPositioning 5.2
 import QtLocation 5.2
@@ -49,45 +48,44 @@ Item {
             height: 40
             spacing: 4
 
-            Button {
+            S.ButtonEdit {
                 anchors.verticalCenter: parent.verticalCenter
-                tooltip: "Guardar"
+                text: "Guardar"
                 iconSource: "../../assets/icons/document-save.png"
-                style: S.ButtonEditStyle { }
                 visible: header.movil? header.movil.dirt || !header.movil.saved : false
 
                 onClicked: if (header.movil) header.movil.save()
             }
 
-            Button {
+            S.ButtonEdit {
                 anchors.verticalCenter: parent.verticalCenter
-                tooltip: "Libre"
+                text: "Libre"
                 iconSource: "../../assets/icons/flag-red.png"
-                style: S.ButtonEditStyle { }
                 visible: header.movil && header.movil.estado !== 2
 
                 onClicked: header.movil.libre()
             }
 
-            Button {
+            S.ButtonEdit {
                 anchors.verticalCenter: parent.verticalCenter
-                tooltip: "Libre"
+                text: "Libre"
                 iconSource: "../../assets/icons/flag.png"
-                style: S.ButtonEditStyle { }
                 visible: header.movil && header.movil.estado !== 0
 
                 onClicked: header.movil.off()
             }
 
-            Button {
+            S.ButtonEdit {
                 anchors.verticalCenter: parent.verticalCenter
-                tooltip: "Encolar"
+                text: "Encolar"
                 iconSource: "../../assets/icons/flag-blue.png"
-                style: S.ButtonEditStyle { }
                 visible: header.movil && header.movil.estado !== 1
+                onClicked: parMenu.open()
 
-                menu: Menu {
+                Menu {
                     id: parMenu
+                    y: 36
+
                     Instantiator  {
                         model: window.paradasModel
 
@@ -102,13 +100,15 @@ Item {
                 }
             }
 
-            Button {
+            S.ButtonEdit {
                 anchors.verticalCenter: parent.verticalCenter
-                tooltip: "Multar"
+                text: "Multar"
                 iconSource: "../../assets/icons/download-later.png"
-                style: S.ButtonEditStyle { }
+                onClicked: tmenu.open()
 
-                menu: Menu {
+                Menu {
+                    id: tmenu
+                    y: 36
                     MenuItem {
                         text: "1 Hora"
                         onTriggered: header.multar(60)
@@ -120,11 +120,10 @@ Item {
                 }
             }
 
-            Button {
+            S.ButtonEdit {
                 anchors.verticalCenter: parent.verticalCenter
-                tooltip: "Agregar"
+                text: "Agregar"
                 iconSource: "../../assets/icons/contact-new.png"
-                style: S.ButtonEditStyle { }
                 visible: user.user === "admin"
 
                 onClicked: tbView.addMovil()
@@ -146,12 +145,12 @@ Item {
         //role: "estado"; filter: "2"
 
         onDoubleClicked: {
-           var parada = window.paradasModel.parada
-           if (!parada) return;
+            var parada = window.paradasModel.parada
+            if (!parada) return;
 
-           parada.appendMovil(movil);
-           //service.updateParada(parada.idParada)
-       }
+            parada.appendMovil(movil);
+            //service.updateParada(parada.idParada)
+        }
     }
 
     function ubicar(row) {

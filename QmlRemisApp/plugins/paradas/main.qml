@@ -1,12 +1,11 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.1
-import QtQuick.Controls.Styles 1.1
+import QtQuick.Controls 2.0
 import QtLocation 5.2
 import OrmQuick 1.0
 
 import qmlremis.Basic 1.0
 import com.kbu9999.Columns 1.0
-import qmlremis.Style 1.0
+import qmlremis.Style 1.0 as S
 import qmlremis.DB 1.0
 import qmlremis.DB.Meta 1.0
 
@@ -27,43 +26,34 @@ Item {
             anchors.margins: 20
             spacing: 10
 
-            TextStyled {
+            S.TextStyled {
                 anchors.verticalCenter: parent.verticalCenter
                 text: "Administracion de Paradas"
                 color: "#505050"
                 font.pointSize: 11
             }
 
-            Button {
+            S.ButtonMap {
                 //width: 36; height: 36
+                setstate: 1
                 anchors.verticalCenter: parent.verticalCenter
-                style: ButtonEditStyle { }
-                iconSource: "../../assets/icons/world.png"
-                onClicked: {
-                    if (window.state === "map_plug" ) {
-                        window.state = "";
-                        return;
-                    }
-
-                    window.state = "map_plug"
+                onLocate: {
                     map.clearMapItems()
                     map.geoItem = showMap
                     map.geoModel = paradas
                 }
             }
 
-            Button {
+            S.ButtonEdit {
                 //width: 36; height: 36
                 anchors.verticalCenter: parent.verticalCenter
-                style: ButtonEditStyle { }
                 iconSource: "../../assets/icons/document-save.png"
                 onClicked: paradas.commit()
             }
 
-            Button {
+            S.ButtonEdit {
                 //width: 36; height: 36
                 anchors.verticalCenter: parent.verticalCenter
-                style: ButtonEditStyle { }
                 iconSource: "../../assets/icons/contact-new.png"
                 onClicked: paradas.insertRows(paradas.count - 1, 1)
             }
@@ -73,7 +63,7 @@ Item {
 
     //Component.onCompleted: ld.load()
 
-    TableView {
+    S.TableView {
         id: tbView
         width: parent.width
         anchors.top: header.bottom
@@ -87,16 +77,14 @@ Item {
 
         model: paradas
 
-        style: TableViewStyle { }
-
         ButtomColumn { source: "qrc:/assets/icons/user-group-properties.png" }
 
         ButtomColumn {
             source: "qrc:/assets/icons/kick-user.png"
-            onClicked: paradas.removeRows(row, 1)
+            onClicked: paradas.deleteRows(row, 1)
         }
 
-        TableViewColumn {
+        S.TableViewColumn {
             title: "ID"
             role: "idParada"
             width: 80
@@ -116,8 +104,8 @@ Item {
         }
 
         //TableViewColumn { id: cgps; role: "gps" }
-        TableViewColumn { role: "lat"; width: 80 }
-        TableViewColumn { role: "lon"; width: 80 }
+        S.TableViewColumn { role: "lat"; width: 80 }
+        S.TableViewColumn { role: "lon"; width: 80 }
 
         onClicked: currentRow = row
     }

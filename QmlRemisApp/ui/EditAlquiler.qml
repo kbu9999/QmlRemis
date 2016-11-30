@@ -10,23 +10,10 @@ import com.kbu9999.FieldPanel 1.0
 
 import Models 1.0
 
-Panel {
+S.Panel {
     id: edAlq
 
-    editIcon: "../assets/icons/document-edit.png"
     ormObject: MainHandler.alquiler
-
-    titleDelegate: S.TextStyled {
-        text: styleData.title
-        selectedColor: "#e0392e"
-        selected: styleData.isCurrentIndex
-        font.bold: true
-    }
-
-    showDelegate: S.TextStyled {
-        text: styleData.value? styleData.value : ""
-        selectedColor: "#e0392e"
-    }
 
     FieldGeoBox {
         title: "Origen"
